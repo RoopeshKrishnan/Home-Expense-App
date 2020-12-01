@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.HomeExpense" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.HomeExpense" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -18,5 +18,21 @@
     <style name="SplashScreenTheme" parent="Theme.MaterialComponents.NoActionBar">
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="Theme.HomeExpense.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.HomeExpense.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Alert Dialoge style-->
+    <style name="CustomDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!--buttons color-->
+        <item name="colorAccent">@android:color/holo_orange_dark</item>
+        <!--title and message color-->
+        <item name="android:textColorPrimary">@color/purple_700</item>
+        <!--dialog background-->
+        <item name="android:windowBackground">@drawable/background_dialog</item>
+        <item name="alertDialogCenterButtons">true</item>
+
     </style>
 </resources>
