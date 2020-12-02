@@ -35,4 +35,7 @@
         <item name="alertDialogCenterButtons">true</item>
 
     </style>
+
+    <!-- navigation drawer menu style-->
+
 </resources>
