@@ -9,16 +9,14 @@
         android:roundIcon="@drawable/ic_home"
         android:supportsRtl="true"
         android:theme="@style/Theme.HomeExpense">
+        <activity android:name=".Expense_calculation_Activity"></activity>
         <activity
             android:name=".VersionActivity"
-            android:parentActivityName=".MainActivity"></activity>
-
-
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ContactActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-
             android:name=".AboutActivity"
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.HomeExpense" />

@@ -12,7 +12,9 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         app:theme="@style/ToolbarTheme"
-        app:popupTheme="@style/Theme.HomeExpense.PopupOverlay" />
+        app:popupTheme="@style/Theme.HomeExpense.PopupOverlay"
+        />
+
 
     <TextView
         android:id="@+id/textView"
@@ -21,4 +23,5 @@
         android:layout_weight="1"
         android:text="This is About Activity page"
         android:textSize="42sp"/>
+
 </LinearLayout>
