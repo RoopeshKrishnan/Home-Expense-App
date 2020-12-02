@@ -5,20 +5,18 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 
-public class AboutActivity extends AppCompatActivity {
+public class VersionActivity extends AppCompatActivity {
 
-    Toolbar toolbar1;
+   Toolbar toolbar3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
-        toolbar1 =(Toolbar) findViewById(R.id.toolbar1);
-        setSupportActionBar(toolbar1);
-        getSupportActionBar().setTitle("About App");
+        setContentView(R.layout.activity_version);
+        toolbar3 = (Toolbar) findViewById(R.id.toolbar3);
+        setSupportActionBar(toolbar3);
+        getSupportActionBar().setTitle("Version");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
     }
 }

@@ -10,11 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HomeExpense">
         <activity
+            android:name=".VersionActivity"
+            android:parentActivityName=".MainActivity"></activity>
+
+
+        <activity
+            android:name=".ContactActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+
             android:name=".AboutActivity"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.HomeExpense"></activity>
-
-
+            android:theme="@style/Theme.HomeExpense" />
         <activity
             android:name=".Splash_screen"
             android:theme="@style/SplashScreenTheme">
@@ -24,8 +31,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
