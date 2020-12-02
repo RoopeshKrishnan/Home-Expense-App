@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 
@@ -98,7 +99,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id=item.getItemId();
         if(id==R.id.nav_home)
-        {return true;}
+        {
+            Toast.makeText(this, "You are @ home" , Toast.LENGTH_SHORT).show();
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(GravityCompat.START);}
+        } else if (id==R.id.nav_about){
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
+            return false;
+        }
         DrawerLayout drawer=(DrawerLayout)findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
