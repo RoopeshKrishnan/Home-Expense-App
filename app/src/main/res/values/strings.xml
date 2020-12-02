@@ -6,4 +6,6 @@
     <string name="close">close</string>
     <string name="no">Cancel</string>
     <string name="yes">Ok</string>
+    <string name="extended_fab_content_desc">Enter Your Expense deatils here</string>
+    <string name="extended_fab_label">Add New Log</string>
 </resources>
