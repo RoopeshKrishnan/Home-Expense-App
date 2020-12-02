@@ -8,4 +8,6 @@
     <color name="sample">#A500FF</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="toolbar_color_control_normal">#ffffff</color>
+
 </resources>
