@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".Expense_calculation_Activity">
 
-    <Button
-        android:id="@+id/button"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="182dp"
-        tools:layout_editor_absoluteY="304dp" />
-</RelativeLayout>
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/putdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="40dp"
+            android:text="Pick a Month and Year" />
+
+        <TextView
+            android:id="@+id/getdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_weight="1"
+            android:hint="here" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
