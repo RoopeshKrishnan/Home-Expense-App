@@ -34,7 +34,7 @@ public class Expense_calculation_Activity extends AppCompatActivity {
                 int month = calendar.get(Calendar.MONTH);
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog dialog = new DatePickerDialog(Expense_calculation_Activity.this,
-                        android.R.style.Theme_Material_Light_NoActionBar,
+                        android.R.style.Theme_Material_Dialog_MinWidth,
                         mDateSetListner,
                         year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.R.color.transparent));

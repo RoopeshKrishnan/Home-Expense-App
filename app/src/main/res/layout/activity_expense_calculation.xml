@@ -1,35 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Expense_calculation_Activity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/purple_700"
+        android:text="Enter Amounts in The corresponding Field"
+        android:layout_marginTop="30dp"
+        android:textSize="20sp"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:paddingTop="25dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/putdate"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="40dp"
-            android:text="Pick a Month and Year" />
+            android:gravity="center"
+            android:layout_weight="2"
+            android:text="Pick month"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:layout_marginBottom="10sp"/>
 
         <TextView
             android:id="@+id/getdate"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
             android:layout_weight="1"
-            android:hint="here" />
+            android:textSize="15sp"
+            android:textColor="@color/purple_700"
+             />
 
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:text="Milk"
+            android:layout_marginBottom="10sp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="25sp"
+            android:background="@drawable/et_bg_style"
+            android:layout_weight="1"
+            android:inputType="number" />
 
     </LinearLayout>
 
 </LinearLayout>
+</ScrollView>
