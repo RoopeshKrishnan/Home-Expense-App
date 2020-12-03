@@ -63,66 +63,66 @@ public class Expense_calculation_Activity extends AppCompatActivity {
                 String getmonthname = "Select a Date";
                 if (month == 0){
                     getmonthname = monthname.get(0);
-                    String date = getmonthname + "/" + day + "/" + year;
+                    String date = year +"  "+ getmonthname ;
                     getdate.setText(date);}else if (month==1){
 
                     getmonthname = monthname.get(1);
-                    String date = getmonthname + "/" + day + "/" + year;
+                    String date = year +"  "+ getmonthname ;
                     getdate.setText(date);
                 }else if (month==1){
 
                     getmonthname = monthname.get(1);
-                    String date = getmonthname + "/" + day + "/" + year;
+                    String date = year +"  "+ getmonthname ;
                     getdate.setText(date);
                 }else if (month==2){
 
                     getmonthname = monthname.get(2);
-                    String date = getmonthname + "/" + day + "/" + year;
+                    String date = year +"  "+ getmonthname ;
                     getdate.setText(date);
                 }else if (month==3){
 
                     getmonthname = monthname.get(3);
-                    String date = getmonthname + "/" + day + "/" + year;
+                    String date = year +"  "+ getmonthname ;
                     getdate.setText(date);
                 }else if (month==4){
 
                     getmonthname = monthname.get(4);
-                    String date = getmonthname + "/" + day + "/" + year;
+                    String date = year +"  "+ getmonthname ;
                     getdate.setText(date);
                 }else if (month==5){
 
                     getmonthname = monthname.get(5);
-                    String date = getmonthname + "/" + day + "/" + year;
+                    String date = year +"  "+ getmonthname ;
                     getdate.setText(date);
                 }else if (month==6){
 
                     getmonthname = monthname.get(6);
-                    String date = getmonthname + "/" + day + "/" + year;
+                    String date = year +"  "+ getmonthname ;
                     getdate.setText(date);
                 }else if (month==7){
 
                     getmonthname = monthname.get(7);
-                    String date = getmonthname + "/" + day + "/" + year;
+                    String date = year +"  "+ getmonthname ;
                     getdate.setText(date);
                 }else if (month==8){
 
                     getmonthname = monthname.get(8);
-                    String date = getmonthname + "/" + day + "/" + year;
+                    String date = year +"  "+ getmonthname ;
                     getdate.setText(date);
                 }else if (month==9){
 
                     getmonthname = monthname.get(9);
-                    String date = getmonthname + "/" + day + "/" + year;
+                    String date = year +"  "+ getmonthname ;
                     getdate.setText(date);
                 }else if (month==10){
 
                     getmonthname = monthname.get(10);
-                    String date = getmonthname + "/" + day + "/" + year;
+                    String date = year +"  "+ getmonthname ;
                     getdate.setText(date);
                 }else if (month==11){
 
                     getmonthname = monthname.get(11);
-                    String date = getmonthname + "/" + day + "/" + year;
+                    String date = year +"  "+ getmonthname ;
                     getdate.setText(date);
                 }
             }
