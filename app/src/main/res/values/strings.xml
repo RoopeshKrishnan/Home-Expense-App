@@ -10,4 +10,26 @@
     <string name="extended_fab_label">Add New Log</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- expense activity malayalam text-->
+    <string name="milk">പാൽ </string>
+    <string name="paper">പത്രം  </string>
+    <string name="current">കറണ്ട് ബില്ല്</string>
+    <string name="gas">ഗ്യാസ് </string>
+    <string name="rise">അരി</string>
+    <string name="veg">പച്ചക്കറി</string>
+    <string name="other">പലവ്യഞ്ജനം</string>
+    <string name="fish">മീൻ</string>
+    <string name="meat">ഇറച്ചി</string>
+    <string name="water">വാട്ടർ ബില്ല്</string>
+    <string name="disel">ഡീസൽ</string>
+    <string name="chips">ചിപ്സ്</string>
+    <string name="shopping">ഷോപ്പിംഗ്</string>
+    <string name="mobile">മൊബൈൽ റീചാർജ്    </string>
+    <string name="wifi">കേബിൾ/വൈഫൈ  </string>
+    <string name="medicine">മരുന്ന് </string>
+    <string name="extra">എക്സ്ട്രാ </string>
+
+
 </resources>

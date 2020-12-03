@@ -64,7 +64,439 @@
             android:backgroundTint="@color/purple_700"
             android:textColor="@color/white"
             android:background="@drawable/tv_bg_style"
-            android:text="Milk"
+            android:text="@string/milk"
+            android:layout_marginBottom="10sp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="6"
+            android:textSize="25sp"
+            android:background="@drawable/et_bg_style"
+            android:layout_weight="1"
+            android:inputType="number" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:text="@string/paper"
+            android:layout_marginBottom="10sp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="25sp"
+            android:background="@drawable/et_bg_style"
+            android:layout_weight="1"
+            android:inputType="number" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:text="@string/current"
+            android:layout_marginBottom="10sp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="25sp"
+            android:background="@drawable/et_bg_style"
+            android:layout_weight="1"
+            android:inputType="number" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:text="@string/gas"
+            android:layout_marginBottom="10sp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="25sp"
+            android:background="@drawable/et_bg_style"
+            android:layout_weight="1"
+            android:inputType="number" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:text="@string/rise"
+            android:layout_marginBottom="10sp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="25sp"
+            android:background="@drawable/et_bg_style"
+            android:layout_weight="1"
+            android:inputType="number" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:text="@string/veg"
+            android:layout_marginBottom="10sp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="25sp"
+            android:background="@drawable/et_bg_style"
+            android:layout_weight="1"
+            android:inputType="number" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:text="@string/other"
+            android:layout_marginBottom="10sp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="25sp"
+            android:background="@drawable/et_bg_style"
+            android:layout_weight="1"
+            android:inputType="number" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:text="@string/fish"
+            android:layout_marginBottom="10sp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="25sp"
+            android:background="@drawable/et_bg_style"
+            android:layout_weight="1"
+            android:inputType="number" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:text="@string/meat"
+            android:layout_marginBottom="10sp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="25sp"
+            android:background="@drawable/et_bg_style"
+            android:layout_weight="1"
+            android:inputType="number" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:text="@string/water"
+            android:layout_marginBottom="10sp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="25sp"
+            android:background="@drawable/et_bg_style"
+            android:layout_weight="1"
+            android:inputType="number" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:text="@string/disel"
+            android:layout_marginBottom="10sp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="25sp"
+            android:background="@drawable/et_bg_style"
+            android:layout_weight="1"
+            android:inputType="number" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:text="@string/chips"
+            android:layout_marginBottom="10sp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="25sp"
+            android:background="@drawable/et_bg_style"
+            android:layout_weight="1"
+            android:inputType="number" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:text="@string/shopping"
+            android:layout_marginBottom="10sp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="25sp"
+            android:background="@drawable/et_bg_style"
+            android:layout_weight="1"
+            android:inputType="number" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:text="@string/mobile"
+            android:layout_marginBottom="10sp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="25sp"
+            android:background="@drawable/et_bg_style"
+            android:layout_weight="1"
+            android:inputType="number" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:text="@string/wifi"
+            android:layout_marginBottom="10sp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="25sp"
+            android:background="@drawable/et_bg_style"
+            android:layout_weight="1"
+            android:inputType="number" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:text="@string/medicine"
+            android:layout_marginBottom="10sp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="25sp"
+            android:background="@drawable/et_bg_style"
+            android:layout_weight="1"
+            android:inputType="number" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_bg_style"
+            android:text="@string/extra"
             android:layout_marginBottom="10sp"/>
 
         <EditText
