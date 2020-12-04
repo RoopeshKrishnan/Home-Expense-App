@@ -27,6 +27,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_margin="@dimen/fab_margin"
         android:backgroundTint="@color/purple_500"
         app:srcCompat="@drawable/ic_fabicon" />

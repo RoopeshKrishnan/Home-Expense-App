@@ -68,6 +68,7 @@
             android:layout_marginBottom="10sp"/>
 
         <EditText
+            android:id="@+id/exp_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="6"
@@ -95,6 +96,7 @@
             android:layout_marginBottom="10sp"/>
 
         <EditText
+            android:id="@+id/exp_2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -122,6 +124,7 @@
             android:layout_marginBottom="10sp"/>
 
         <EditText
+            android:id="@+id/exp_3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -149,6 +152,7 @@
             android:layout_marginBottom="10sp"/>
 
         <EditText
+            android:id="@+id/exp_4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -176,6 +180,7 @@
             android:layout_marginBottom="10sp"/>
 
         <EditText
+            android:id="@+id/exp_5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -203,6 +208,7 @@
             android:layout_marginBottom="10sp"/>
 
         <EditText
+            android:id="@+id/exp_6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -230,6 +236,7 @@
             android:layout_marginBottom="10sp"/>
 
         <EditText
+            android:id="@+id/exp_7"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -257,6 +264,7 @@
             android:layout_marginBottom="10sp"/>
 
         <EditText
+            android:id="@+id/exp_8"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -284,6 +292,7 @@
             android:layout_marginBottom="10sp"/>
 
         <EditText
+            android:id="@+id/exp_9"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -311,6 +320,7 @@
             android:layout_marginBottom="10sp"/>
 
         <EditText
+            android:id="@+id/exp_10"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -338,6 +348,7 @@
             android:layout_marginBottom="10sp"/>
 
         <EditText
+            android:id="@+id/exp_11"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -365,6 +376,7 @@
             android:layout_marginBottom="10sp"/>
 
         <EditText
+            android:id="@+id/exp_12"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -392,6 +404,7 @@
             android:layout_marginBottom="10sp"/>
 
         <EditText
+            android:id="@+id/exp_13"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -419,6 +432,7 @@
             android:layout_marginBottom="10sp"/>
 
         <EditText
+            android:id="@+id/exp_14"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -446,6 +460,7 @@
             android:layout_marginBottom="10sp"/>
 
         <EditText
+            android:id="@+id/exp_15"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -473,6 +488,7 @@
             android:layout_marginBottom="10sp"/>
 
         <EditText
+            android:id="@+id/exp_16"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -500,6 +516,7 @@
             android:layout_marginBottom="10sp"/>
 
         <EditText
+            android:id="@+id/exp_17"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -508,7 +525,72 @@
             android:layout_weight="1"
             android:inputType="number" />
 
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/exp_calculate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/total"
+            android:textColor="@color/purple_700"
+            android:gravity="end"
+            android:backgroundTint="@color/white"
+            android:background="@color/white"
+            android:textSize="25sp"/>
+        <TextView
+            android:id="@+id/exp_total"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/purple_700"
+            android:backgroundTint="@color/white"
+            android:background="@color/white"
+            android:gravity="start"
+            android:textSize="25sp"/>
+
     </LinearLayout>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal">
+
+      <Button
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="4"
+          android:gravity="center"
+          android:layout_marginLeft="40dp"
+          android:textColor="@color/purple_700"
+          android:background="@drawable/bt_bg_cancel"
+          android:drawableTint="@color/teal_200"
+          android:layout_marginRight="5dp"
+          android:text="Cancel"
+          android:drawablePadding="-60dp"
+          android:textSize="20sp"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:drawableTint="@color/teal_200"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/bt_bg_ok"
+            android:layout_marginRight="40dp"
+            android:textColor="@color/white"
+            android:text="Ok"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
 </LinearLayout>
+
 </ScrollView>
