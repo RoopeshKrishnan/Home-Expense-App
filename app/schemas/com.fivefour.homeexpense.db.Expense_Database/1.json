@@ -1,0 +1,148 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "797bed9da59a6036ba4da263768a86f6",
+    "entities": [
+      {
+        "tableName": "expense_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `Column_Year_month` TEXT, `Column_one` INTEGER NOT NULL, `Column_two` INTEGER NOT NULL, `Column_three` INTEGER NOT NULL, `Column_four` INTEGER NOT NULL, `Column_five` INTEGER NOT NULL, `Column_six` INTEGER NOT NULL, `Column_seven` INTEGER NOT NULL, `Column_eight` INTEGER NOT NULL, `Column_nine` INTEGER NOT NULL, `Column_ten` INTEGER NOT NULL, `Column_eleven` INTEGER NOT NULL, `Column_twelve` INTEGER NOT NULL, `Column_thirteen` INTEGER NOT NULL, `Column_fourteen` INTEGER NOT NULL, `Column_fifteen` INTEGER NOT NULL, `Column_sixteen` INTEGER NOT NULL, `Column_seventeen` INTEGER NOT NULL, `Column_total` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yearmonth",
+            "columnName": "Column_Year_month",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "exp_one",
+            "columnName": "Column_one",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp_two",
+            "columnName": "Column_two",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp_three",
+            "columnName": "Column_three",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp_four",
+            "columnName": "Column_four",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp_five",
+            "columnName": "Column_five",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp_six",
+            "columnName": "Column_six",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp_seven",
+            "columnName": "Column_seven",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp_eight",
+            "columnName": "Column_eight",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp_nine",
+            "columnName": "Column_nine",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp_ten",
+            "columnName": "Column_ten",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp_eleven",
+            "columnName": "Column_eleven",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp_twelve",
+            "columnName": "Column_twelve",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp_thirteen",
+            "columnName": "Column_thirteen",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp_fourteen",
+            "columnName": "Column_fourteen",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp_fifteen",
+            "columnName": "Column_fifteen",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp_sixteen",
+            "columnName": "Column_sixteen",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp_seventeen",
+            "columnName": "Column_seventeen",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp_total",
+            "columnName": "Column_total",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '797bed9da59a6036ba4da263768a86f6')"
+    ]
+  }
+}
