@@ -1,8 +1,11 @@
 package com.fivefour.homeexpense.db;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import java.util.List;
 
 @Dao
 public interface Expense_Dao {
@@ -12,4 +15,7 @@ public interface Expense_Dao {
 
     @Insert
     Void insert(Expense expense);
+
+    @Query("SELECT * FROM expense_table ")
+    LiveData<List<Expense>> getAllExpense();
 }

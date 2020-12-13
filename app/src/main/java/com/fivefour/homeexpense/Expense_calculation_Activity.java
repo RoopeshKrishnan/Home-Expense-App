@@ -1,9 +1,13 @@
 package com.fivefour.homeexpense;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.app.DatePickerDialog;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -11,17 +15,25 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.fivefour.homeexpense.db.Expense;
+import com.fivefour.homeexpense.db.Expense_Database;
+import com.fivefour.homeexpense.model.Expense_VIewModel;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 import static android.view.WindowManager.*;
+import static androidx.lifecycle.ViewModelProviders.*;
 import static java.util.Locale.*;
 
 public class Expense_calculation_Activity extends AppCompatActivity {
-   public TextView putdate, getdate, cal, sum, display_tot;
-   public EditText hp_1, hp_2, hp_3, hp_4, hp_5, hp_6, hp_7, hp_8, hp_9, hp_10, hp_11, hp_12, hp_13, hp_14, hp_15, hp_16, hp_17;
+    private Expense_VIewModel expense_vIewModel;
+    public TextView putdate, getdate, cal, sum, display_tot;
+    public EditText hp_1, hp_2, hp_3, hp_4, hp_5, hp_6, hp_7, hp_8, hp_9, hp_10, hp_11, hp_12, hp_13, hp_14, hp_15, hp_16, hp_17;
     Button okbutton;
     public DatePickerDialog.OnDateSetListener mDateSetListner;
 
@@ -33,6 +45,15 @@ public class Expense_calculation_Activity extends AppCompatActivity {
         getWindow().setSoftInputMode(
                 LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         home_expense_total();
+
+        expense_vIewModel = ViewModelProviders.of(this).get(Expense_VIewModel.class);
+        expense_vIewModel.getAllExpense().observe(this, new Observer<List<Expense>>() {
+            @Override
+            public void onChanged(List<Expense> expenses) {
+                //update recycler view
+                Toast.makeText(Expense_calculation_Activity.this, "onChanged", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         putdate = (TextView) findViewById(R.id.putdate);
         getdate = (TextView) findViewById(R.id.getdate);
@@ -61,7 +82,8 @@ public class Expense_calculation_Activity extends AppCompatActivity {
         okbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* MyDatabaseHelper myDB = new MyDatabaseHelper(Expense_calculation_Activity.this);
+
+                Okbutton_Click_actions();               /* MyDatabaseHelper myDB = new MyDatabaseHelper(Expense_calculation_Activity.this);
                 myDB.addExpense (getdate.getText().toString(),
                         Integer.valueOf(hp_1.getText().toString().trim()),
                         Integer.valueOf(hp_2.getText().toString().trim()),
@@ -188,10 +210,11 @@ public class Expense_calculation_Activity extends AppCompatActivity {
             }
         };
 
-
-
     }
 
+    // outside oncreate method
+
+    //calculating expense
     public void home_expense_total() {
 
         cal = (TextView) findViewById(R.id.exp_calculate);
@@ -332,6 +355,70 @@ public class Expense_calculation_Activity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+
+    private void Okbutton_Click_actions() {
+
+       /* final String year_name_holder= getdate.getText().toString();
+        final int expense1 = Integer.parseInt(hp_1.getText().toString());
+        final int expense2 = Integer.parseInt(hp_2.getText().toString());
+        final int expense3 = Integer.parseInt(hp_3.getText().toString());
+        final int expense4 = Integer.parseInt(hp_4.getText().toString());
+        final int expense5 = Integer.parseInt(hp_5.getText().toString());
+        final int expense6 = Integer.parseInt(hp_6.getText().toString());
+        final int expense7 = Integer.parseInt(hp_7.getText().toString());
+        final int expense8 = Integer.parseInt(hp_8.getText().toString());
+        final int expense9 = Integer.parseInt(hp_9.getText().toString());
+        final int expense10= Integer.parseInt(hp_10.getText().toString());
+        final int expense11= Integer.parseInt(hp_11.getText().toString());
+        final int expense12= Integer.parseInt(hp_12.getText().toString());
+        final int expense13= Integer.parseInt(hp_13.getText().toString());
+        final int expense14= Integer.parseInt(hp_14.getText().toString());
+        final int expense15= Integer.parseInt(hp_15.getText().toString());
+        final int expense16= Integer.parseInt(hp_16.getText().toString());
+        final int expense17= Integer.parseInt(hp_17.getText().toString());
+
+        final int expense_total = Integer.parseInt(display_tot.getText().toString());
+
+
+
+        class SaveTask extends AsyncTask<Void, Void, Void> {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+
+                Expense expense = new Expense();
+                expense.setYearmonth(year_name_holder);
+                expense.setExp_one(expense1);
+                expense.setExp_two(expense2);
+                expense.setExp_three(expense3);
+                expense.setExp_four(expense4);
+                expense.setExp_five(expense5);
+                expense.setExp_six(expense6);
+                expense.setExp_seven(expense7);
+                expense.setExp_eight(expense8);
+                expense.setExp_nine(expense9);
+                expense.setExp_ten(expense10);
+                expense.setExp_eleven(expense11);
+                expense.setExp_twelve(expense12);
+                expense.setExp_thirteen(expense13);
+                expense.setExp_fourteen(expense14);
+                expense.setExp_fifteen(expense15);
+                expense.setExp_sixteen(expense16);
+                expense.setExp_seventeen(expense17);
+                expense.setExp_total(expense_total);
+
+                Expense_Database.(getApplicationContext())
+                        .expense_dao()
+                        .insert(expense[0]);
+
+                return null;
+            }
+        }
+        SaveTask st = new SaveTask();
+        st.execute();*/
 
     }
 
