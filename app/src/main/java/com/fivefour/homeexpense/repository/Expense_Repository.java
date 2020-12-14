@@ -26,6 +26,11 @@ public class Expense_Repository {
 
     }
 
+    public void delete(Expense expense){
+
+        new DeleteExpesneAsyncTASK(expense_dao).execute(expense);
+    }
+
     public LiveData<List<Expense>> getAllExpense() {
 
         return allExpense;
@@ -44,6 +49,22 @@ public class Expense_Repository {
         @Override
         protected Void doInBackground(Expense... expenses) {
             expense_dao.insert(expenses[0]);
+            return null;
+        }
+    }
+
+    private static class DeleteExpesneAsyncTASK extends AsyncTask<Expense, Void, Void>{
+
+        private Expense_Dao expense_dao;
+
+        private DeleteExpesneAsyncTASK(Expense_Dao expense_dao){
+
+            this.expense_dao = expense_dao;
+        }
+
+        @Override
+        protected Void doInBackground(Expense... expenses) {
+            expense_dao.delete(expenses[0]);
             return null;
         }
     }

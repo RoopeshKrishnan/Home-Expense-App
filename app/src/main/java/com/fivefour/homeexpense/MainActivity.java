@@ -25,6 +25,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -98,17 +99,40 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //Toast.makeText(MainActivity.this, "onChanged", Toast.LENGTH_SHORT).show();
             }
         });
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+                expense_vIewModel.delete(expenseAdapter.getExpenseAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(MainActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
+
+            }
+        }).attachToRecyclerView(recyclerView);
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-//&& requestCode == RESULT_OK
-        if (requestCode == ADD_EXPENSE_REQUEST) {
-            Toast.makeText(MainActivity.this, "inside if code", Toast.LENGTH_SHORT).show();
+        // int receive_one;
+        if (requestCode == ADD_EXPENSE_REQUEST && resultCode == RESULT_OK) {
 
             String receive_year = data.getStringExtra(Expense_calculation_Activity.key_year);
+            /*int one =data.getIntExtra(Expense_calculation_Activity.key_one, 0);
+            String onee = String.valueOf(one);
+            if (onee.trim().isEmpty()) {
+                receive_one = 1;
+            }else{
+             receive_one = data.getIntExtra(Expense_calculation_Activity.key_one, 0);
+                Toast.makeText(MainActivity.this, receive_one+"haha", Toast.LENGTH_SHORT).show();}*/
+
             int receive_one = data.getIntExtra(Expense_calculation_Activity.key_one, 0);
             int receive_two = data.getIntExtra(Expense_calculation_Activity.key_two, 0);
             int receive_three = data.getIntExtra(Expense_calculation_Activity.key_three, 0);
@@ -127,6 +151,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             int receive_sixteen = data.getIntExtra(Expense_calculation_Activity.key_sixteen, 0);
             int receive_seventeen = data.getIntExtra(Expense_calculation_Activity.key_seventeen, 0);
             int receive_total = data.getIntExtra(Expense_calculation_Activity.key_total, 0);
+
 
             Expense expense = new Expense(receive_year, receive_one, receive_two, receive_three, receive_four, receive_five, receive_six, receive_seven, receive_eight, receive_nine, receive_ten, receive_eleven, receive_twleve, receive_thirteen, receive_fourteen, receive_fifteen, receive_sixteen, receive_seventeen, receive_total);
             expense_vIewModel.insert(expense);

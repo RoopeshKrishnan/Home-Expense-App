@@ -25,6 +25,8 @@ public class Expense_VIewModel extends AndroidViewModel {
         repository.insert(expense);
     }
 
+    public void delete(Expense expense) {repository.delete(expense);}
+
     public LiveData<List<Expense>> getAllExpense() {
         return allExpense;
     }

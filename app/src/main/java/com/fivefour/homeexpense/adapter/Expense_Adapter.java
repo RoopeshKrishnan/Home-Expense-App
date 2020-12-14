@@ -40,11 +40,16 @@ public class Expense_Adapter extends RecyclerView.Adapter<Expense_Adapter.Expens
         return expenses.size();
     }
 
-
+// Update recycler view with each cahnges
     public void updateExpenseon(List<Expense> expenses){
 
         this.expenses = expenses;
         notifyDataSetChanged();
+    }
+
+    // for item positions
+    public Expense getExpenseAt(int position){
+        return expenses.get(position);
     }
 
     class ExpenseHolder extends RecyclerView.ViewHolder {
