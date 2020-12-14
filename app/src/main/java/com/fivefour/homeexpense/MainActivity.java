@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 
+import com.fivefour.homeexpense.adapter.Expense_Adapter;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -19,6 +20,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.MenuItem;
@@ -27,7 +29,6 @@ import android.widget.Toast;
 
 import static android.content.DialogInterface.*;
 import static androidx.appcompat.app.AlertDialog.*;
-
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        fab =(FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,8 +66,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-    }
 
+        //RecyclerView
+        recyclerView = findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+
+        Expense_Adapter expenseAdapter = new Expense_Adapter();
+        recyclerView.setAdapter(expenseAdapter);
+    }
 
 
     @Override
@@ -76,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawer.closeDrawer(GravityCompat.START);
 
         } else {
-            Builder alertDialogBuilder = new Builder(this,R.style.CustomDialogTheme);
+            Builder alertDialogBuilder = new Builder(this, R.style.CustomDialogTheme);
             alertDialogBuilder.setTitle("Exit Application?");
             alertDialogBuilder
                     .setMessage("Click yes to exit!")
@@ -92,11 +100,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                     .setNegativeButton("No",
                             new OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
+                                public void onClick(DialogInterface dialog, int id) {
 
-                            dialog.cancel();
-                        }
-                    });
+                                    dialog.cancel();
+                                }
+                            });
 
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
@@ -105,26 +113,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id=item.getItemId();
-        if(id==R.id.nav_home)
-        {
-            Toast.makeText(this, "You are @ home" , Toast.LENGTH_SHORT).show();
+        int id = item.getItemId();
+        if (id == R.id.nav_home) {
+            Toast.makeText(this, "You are @ home", Toast.LENGTH_SHORT).show();
             if (drawer.isDrawerOpen(GravityCompat.START)) {
-                drawer.closeDrawer(GravityCompat.START);}
-        } else if (id==R.id.nav_about){
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        } else if (id == R.id.nav_about) {
             Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
             return false;
-        } else if(id==R.id.nav_contact){
+        } else if (id == R.id.nav_contact) {
             Intent intent = new Intent(this, ContactActivity.class);
             startActivity(intent);
             return false;
-        }else if(id==R.id.nav_version){
+        } else if (id == R.id.nav_version) {
             Intent intent = new Intent(this, VersionActivity.class);
             startActivity(intent);
             return false;
         }
-        DrawerLayout drawer=(DrawerLayout)findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

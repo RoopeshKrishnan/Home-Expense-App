@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.graphics.drawable.ColorDrawable;
@@ -17,6 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fivefour.homeexpense.adapter.Expense_Adapter;
 import com.fivefour.homeexpense.db.Expense;
 import com.fivefour.homeexpense.db.Expense_Database;
 import com.fivefour.homeexpense.model.Expense_VIewModel;
@@ -35,6 +38,7 @@ public class Expense_calculation_Activity extends AppCompatActivity {
     public TextView putdate, getdate, cal, sum, display_tot;
     public EditText hp_1, hp_2, hp_3, hp_4, hp_5, hp_6, hp_7, hp_8, hp_9, hp_10, hp_11, hp_12, hp_13, hp_14, hp_15, hp_16, hp_17;
     Button okbutton;
+    RecyclerView recyclerView;
     public DatePickerDialog.OnDateSetListener mDateSetListner;
 
     @Override
@@ -45,6 +49,18 @@ public class Expense_calculation_Activity extends AppCompatActivity {
         getWindow().setSoftInputMode(
                 LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         home_expense_total();
+
+
+
+
+        //RecyclerView
+        /*recyclerView= findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setHasFixedSize(true);
+
+        Expense_Adapter expenseAdapter = new Expense_Adapter();
+        recyclerView.setAdapter(expenseAdapter);*/
+
 
         expense_vIewModel = ViewModelProviders.of(this).get(Expense_VIewModel.class);
         expense_vIewModel.getAllExpense().observe(this, new Observer<List<Expense>>() {
