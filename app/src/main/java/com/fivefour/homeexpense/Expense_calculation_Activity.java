@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -34,6 +35,27 @@ import static androidx.lifecycle.ViewModelProviders.*;
 import static java.util.Locale.*;
 
 public class Expense_calculation_Activity extends AppCompatActivity {
+    public static final String key_year = "com.fivefour.homeexpense.key_year";
+    public static final String key_one = "com.fivefour.homeexpense.key_one";
+    public static final String key_two = "com.fivefour.homeexpense.key_two";
+    public static final String key_three = "com.fivefour.homeexpense.key_three";
+    public static final String key_four = "com.fivefour.homeexpense.key_four";
+    public static final String key_five = "com.fivefour.homeexpense.key_five";
+    public static final String key_six = "com.fivefour.homeexpense.key_six";
+    public static final String key_seven = "com.fivefour.homeexpense.key_seven";
+    public static final String key_eight = "com.fivefour.homeexpense.key_eight";
+    public static final String key_nine = "com.fivefour.homeexpense.key_nine";
+    public static final String key_ten = "com.fivefour.homeexpense.key_ten";
+    public static final String key_eleven = "com.fivefour.homeexpense.key_eleven";
+    public static final String key_twelve = "com.fivefour.homeexpense.key_twelve";
+    public static final String key_thirteen = "com.fivefour.homeexpense.key_thirteen";
+    public static final String key_fourteen = "com.fivefour.homeexpense.key_fourteen";
+    public static final String key_fifteen = "com.fivefour.homeexpense.key_fifteen";
+    public static final String key_sixteen = "com.fivefour.homeexpense.key_sixteen";
+    public static final String key_seventeen = "com.fivefour.homeexpense.key_sventeen";
+    public static final String key_total = "com.fivefour.homeexpense.key_total";
+
+
     private Expense_VIewModel expense_vIewModel;
     public TextView putdate, getdate, cal, sum, display_tot;
     public EditText hp_1, hp_2, hp_3, hp_4, hp_5, hp_6, hp_7, hp_8, hp_9, hp_10, hp_11, hp_12, hp_13, hp_14, hp_15, hp_16, hp_17;
@@ -51,8 +73,6 @@ public class Expense_calculation_Activity extends AppCompatActivity {
         home_expense_total();
 
 
-
-
         //RecyclerView
         /*recyclerView= findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -62,14 +82,14 @@ public class Expense_calculation_Activity extends AppCompatActivity {
         recyclerView.setAdapter(expenseAdapter);*/
 
 
-        expense_vIewModel = ViewModelProviders.of(this).get(Expense_VIewModel.class);
+        /*expense_vIewModel = ViewModelProviders.of(this).get(Expense_VIewModel.class);
         expense_vIewModel.getAllExpense().observe(this, new Observer<List<Expense>>() {
             @Override
             public void onChanged(List<Expense> expenses) {
                 //update recycler view
                 Toast.makeText(Expense_calculation_Activity.this, "onChanged", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
         putdate = (TextView) findViewById(R.id.putdate);
         getdate = (TextView) findViewById(R.id.getdate);
@@ -377,64 +397,51 @@ public class Expense_calculation_Activity extends AppCompatActivity {
 
     private void Okbutton_Click_actions() {
 
-       /* final String year_name_holder= getdate.getText().toString();
-        final int expense1 = Integer.parseInt(hp_1.getText().toString());
-        final int expense2 = Integer.parseInt(hp_2.getText().toString());
-        final int expense3 = Integer.parseInt(hp_3.getText().toString());
-        final int expense4 = Integer.parseInt(hp_4.getText().toString());
-        final int expense5 = Integer.parseInt(hp_5.getText().toString());
-        final int expense6 = Integer.parseInt(hp_6.getText().toString());
-        final int expense7 = Integer.parseInt(hp_7.getText().toString());
-        final int expense8 = Integer.parseInt(hp_8.getText().toString());
-        final int expense9 = Integer.parseInt(hp_9.getText().toString());
-        final int expense10= Integer.parseInt(hp_10.getText().toString());
-        final int expense11= Integer.parseInt(hp_11.getText().toString());
-        final int expense12= Integer.parseInt(hp_12.getText().toString());
-        final int expense13= Integer.parseInt(hp_13.getText().toString());
-        final int expense14= Integer.parseInt(hp_14.getText().toString());
-        final int expense15= Integer.parseInt(hp_15.getText().toString());
-        final int expense16= Integer.parseInt(hp_16.getText().toString());
-        final int expense17= Integer.parseInt(hp_17.getText().toString());
+        String year_name_holder = getdate.getText().toString();
+        int expense1 = Integer.parseInt(hp_1.getText().toString());
+        int expense2 = Integer.parseInt(hp_2.getText().toString());
+        int expense3 = Integer.parseInt(hp_3.getText().toString());
+        int expense4 = Integer.parseInt(hp_4.getText().toString());
+        int expense5 = Integer.parseInt(hp_5.getText().toString());
+        int expense6 = Integer.parseInt(hp_6.getText().toString());
+        int expense7 = Integer.parseInt(hp_7.getText().toString());
+        int expense8 = Integer.parseInt(hp_8.getText().toString());
+        int expense9 = Integer.parseInt(hp_9.getText().toString());
+        int expense10 = Integer.parseInt(hp_10.getText().toString());
+        int expense11 = Integer.parseInt(hp_11.getText().toString());
+        int expense12 = Integer.parseInt(hp_12.getText().toString());
+        int expense13 = Integer.parseInt(hp_13.getText().toString());
+        int expense14 = Integer.parseInt(hp_14.getText().toString());
+        int expense15 = Integer.parseInt(hp_15.getText().toString());
+        int expense16 = Integer.parseInt(hp_16.getText().toString());
+        int expense17 = Integer.parseInt(hp_17.getText().toString());
 
-        final int expense_total = Integer.parseInt(display_tot.getText().toString());
+        int expense_total = Integer.parseInt(display_tot.getText().toString());
 
+        Intent data = new Intent();
+        data.putExtra(key_year,year_name_holder);
+        data.putExtra(key_one,expense1);
+        data.putExtra(key_two,expense2);
+        data.putExtra(key_three,expense3);
+        data.putExtra(key_four,expense4);
+        data.putExtra(key_five,expense5);
+        data.putExtra(key_six,expense6);
+        data.putExtra(key_seven,expense7);
+        data.putExtra(key_eight,expense8);
+        data.putExtra(key_nine,expense9);
+        data.putExtra(key_ten,expense10);
+        data.putExtra(key_eleven,expense11);
+        data.putExtra(key_twelve,expense12);
+        data.putExtra(key_thirteen,expense13);
+        data.putExtra(key_fourteen,expense14);
+        data.putExtra(key_fifteen,expense15);
+        data.putExtra(key_sixteen,expense16);
+        data.putExtra(key_seventeen,expense17);
+        data.putExtra(key_total,expense_total);
 
+        setResult(RESULT_OK,data);
+        finish();
 
-        class SaveTask extends AsyncTask<Void, Void, Void> {
-
-            @Override
-            protected Void doInBackground(Void... voids) {
-
-                Expense expense = new Expense();
-                expense.setYearmonth(year_name_holder);
-                expense.setExp_one(expense1);
-                expense.setExp_two(expense2);
-                expense.setExp_three(expense3);
-                expense.setExp_four(expense4);
-                expense.setExp_five(expense5);
-                expense.setExp_six(expense6);
-                expense.setExp_seven(expense7);
-                expense.setExp_eight(expense8);
-                expense.setExp_nine(expense9);
-                expense.setExp_ten(expense10);
-                expense.setExp_eleven(expense11);
-                expense.setExp_twelve(expense12);
-                expense.setExp_thirteen(expense13);
-                expense.setExp_fourteen(expense14);
-                expense.setExp_fifteen(expense15);
-                expense.setExp_sixteen(expense16);
-                expense.setExp_seventeen(expense17);
-                expense.setExp_total(expense_total);
-
-                Expense_Database.(getApplicationContext())
-                        .expense_dao()
-                        .insert(expense[0]);
-
-                return null;
-            }
-        }
-        SaveTask st = new SaveTask();
-        st.execute();*/
 
     }
 

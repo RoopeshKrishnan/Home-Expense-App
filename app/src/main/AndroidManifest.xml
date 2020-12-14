@@ -9,7 +9,10 @@
         android:roundIcon="@drawable/ic_home"
         android:supportsRtl="true"
         android:theme="@style/Theme.HomeExpense">
-        <activity android:name=".Expense_calculation_Activity"></activity>
+        <activity
+            android:name=".Expense_calculation_Activity"
+            android:parentActivityName=".MainActivity"
+            ></activity>
         <activity
             android:name=".VersionActivity"
             android:parentActivityName=".MainActivity" />
@@ -29,7 +32,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

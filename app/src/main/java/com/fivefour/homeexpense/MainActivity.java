@@ -1,6 +1,7 @@
 package com.fivefour.homeexpense;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,8 @@ import android.os.Bundle;
 import android.view.Menu;
 
 import com.fivefour.homeexpense.adapter.Expense_Adapter;
+import com.fivefour.homeexpense.db.Expense;
+import com.fivefour.homeexpense.model.Expense_VIewModel;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -20,6 +23,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,11 +32,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.List;
+
 import static android.content.DialogInterface.*;
 import static androidx.appcompat.app.AlertDialog.*;
+import static androidx.lifecycle.ViewModelProviders.*;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static final int ADD_EXPENSE_REQUEST = 1;
 
     DrawerLayout drawer;
     NavigationView navigationView;
@@ -39,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     FloatingActionButton fab;
     RecyclerView recyclerView;
+    Expense_VIewModel expense_vIewModel;
 
 
     @Override
@@ -54,7 +65,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Expense_calculation_Activity.class);
-                startActivity(intent);
+                startActivityForResult(intent, ADD_EXPENSE_REQUEST);
+
+
             }
         });
 
@@ -74,8 +87,58 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Expense_Adapter expenseAdapter = new Expense_Adapter();
         recyclerView.setAdapter(expenseAdapter);
+
+
+        expense_vIewModel = ViewModelProviders.of(this).get(Expense_VIewModel.class);
+        expense_vIewModel.getAllExpense().observe(this, new Observer<List<Expense>>() {
+            @Override
+            public void onChanged(List<Expense> expenses) {
+                //update recycler view
+                expenseAdapter.updateExpenseon(expenses);
+                //Toast.makeText(MainActivity.this, "onChanged", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+//&& requestCode == RESULT_OK
+        if (requestCode == ADD_EXPENSE_REQUEST) {
+            Toast.makeText(MainActivity.this, "inside if code", Toast.LENGTH_SHORT).show();
+
+            String receive_year = data.getStringExtra(Expense_calculation_Activity.key_year);
+            int receive_one = data.getIntExtra(Expense_calculation_Activity.key_one, 0);
+            int receive_two = data.getIntExtra(Expense_calculation_Activity.key_two, 0);
+            int receive_three = data.getIntExtra(Expense_calculation_Activity.key_three, 0);
+            int receive_four = data.getIntExtra(Expense_calculation_Activity.key_four, 0);
+            int receive_five = data.getIntExtra(Expense_calculation_Activity.key_five, 0);
+            int receive_six = data.getIntExtra(Expense_calculation_Activity.key_six, 0);
+            int receive_seven = data.getIntExtra(Expense_calculation_Activity.key_seven, 0);
+            int receive_eight = data.getIntExtra(Expense_calculation_Activity.key_eight, 0);
+            int receive_nine = data.getIntExtra(Expense_calculation_Activity.key_nine, 0);
+            int receive_ten = data.getIntExtra(Expense_calculation_Activity.key_ten, 0);
+            int receive_eleven = data.getIntExtra(Expense_calculation_Activity.key_eleven, 0);
+            int receive_twleve = data.getIntExtra(Expense_calculation_Activity.key_twelve, 0);
+            int receive_thirteen = data.getIntExtra(Expense_calculation_Activity.key_thirteen, 0);
+            int receive_fourteen = data.getIntExtra(Expense_calculation_Activity.key_fourteen, 0);
+            int receive_fifteen = data.getIntExtra(Expense_calculation_Activity.key_fifteen, 0);
+            int receive_sixteen = data.getIntExtra(Expense_calculation_Activity.key_sixteen, 0);
+            int receive_seventeen = data.getIntExtra(Expense_calculation_Activity.key_seventeen, 0);
+            int receive_total = data.getIntExtra(Expense_calculation_Activity.key_total, 0);
+
+            Expense expense = new Expense(receive_year, receive_one, receive_two, receive_three, receive_four, receive_five, receive_six, receive_seven, receive_eight, receive_nine, receive_ten, receive_eleven, receive_twleve, receive_thirteen, receive_fourteen, receive_fifteen, receive_sixteen, receive_seventeen, receive_total);
+            expense_vIewModel.insert(expense);
+            Toast.makeText(this, "Added successfully", Toast.LENGTH_SHORT).show();
+
+
+        } else {
+
+            Toast.makeText(this, "Something Wrong", Toast.LENGTH_SHORT).show();
+
+        }
+    }
 
     @Override
     public void onBackPressed() {
