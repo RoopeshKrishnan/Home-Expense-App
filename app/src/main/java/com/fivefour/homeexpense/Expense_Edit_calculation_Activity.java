@@ -14,6 +14,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.fivefour.homeexpense.db.Expense;
+import com.fivefour.homeexpense.db.Expense_Dao;
 import com.fivefour.homeexpense.model.Expense_VIewModel;
 
 import java.util.ArrayList;
@@ -44,6 +46,7 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
     public static final String key_total = "com.fivefour.homeexpense.key_total";
 
 
+    private Expense_Dao dao;
     private Expense_VIewModel expense_vIewModel;
     public TextView putdate, getdate, cal, sum, display_tot;
     public EditText hp_onne, hp_1, hp_2, hp_3, hp_4, hp_5, hp_6, hp_7, hp_8, hp_9, hp_10, hp_11, hp_12, hp_13, hp_14, hp_15, hp_16, hp_17;
@@ -87,35 +90,102 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
         hp_17 = (EditText) findViewById(R.id.exp_17);
 
 
-
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.bt_cancel);
 
 
-        Intent intent = getIntent();
-
-
-
-        if (intent.hasExtra(key_id))
+      Intent intent = getIntent();
+      if (intent.hasExtra(key_id))
         {
             setTitle("Edit");
+         int againi;
+
+
+        getdate.setText(intent.getStringExtra(key_year));
+
+
+        int int1 = intent.getIntExtra(key_one, 0);
+        String str1 = String.valueOf(int1);
+        hp_1.setText(str1);
+
+            int int2 = intent.getIntExtra(key_two, 0);
+            String str2 = String.valueOf(int2);
+            hp_2.setText(str2);
+
+            int int3 = intent.getIntExtra(key_three, 0);
+            String str3 = String.valueOf(int3);
+            hp_3.setText(str3);
+
+            int int4 = intent.getIntExtra(key_four, 0);
+            String str4 = String.valueOf(int4);
+            hp_4.setText(str4);
+
+            int int5 = intent.getIntExtra(key_five, 0);
+            String str5 = String.valueOf(int5);
+            hp_5.setText(str5);
+
+            int int6 = intent.getIntExtra(key_six, 0);
+            String str6 = String.valueOf(int6);
+            hp_6.setText(str6);
+
+            int int7 = intent.getIntExtra(key_seven, 0);
+            String str7 = String.valueOf(int7);
+            hp_7.setText(str7);
+
+            int int8 = intent.getIntExtra(key_eight, 0);
+            String str8 = String.valueOf(int8);
+            hp_8.setText(str8);
+
+            int int9 = intent.getIntExtra(key_nine, 0);
+            String str9 = String.valueOf(int9);
+            hp_9.setText(str9);
+
+            int int10 = intent.getIntExtra(key_ten, 0);
+            String str10 = String.valueOf(int10);
+            hp_10.setText(str10);
+
+            int int11 = intent.getIntExtra(key_eleven, 0);
+            String str11 = String.valueOf(int11);
+            hp_11.setText(str11);
+
+            int int12 = intent.getIntExtra(key_twelve, 0);
+            String str12 = String.valueOf(int12);
+            hp_12.setText(str12);
+
+            int int13 = intent.getIntExtra(key_thirteen, 0);
+            String str13 = String.valueOf(int13);
+            hp_13.setText(str13);
+
+            int int14 = intent.getIntExtra(key_fourteen, 0);
+            String str14 = String.valueOf(int14);
+            hp_14.setText(str14);
+
+            int int15 = intent.getIntExtra(key_fifteen, 0);
+            String str15 = String.valueOf(int15);
+            hp_15.setText(str15);
+
+            int int16 = intent.getIntExtra(key_sixteen, 0);
+            String str16 = String.valueOf(int16);
+            hp_16.setText(str16);
+
+            int int17 = intent.getIntExtra(key_seventeen, 0);
+            String str17 = String.valueOf(int17);
+            hp_17.setText(str17);
+
+            int inttot = intent.getIntExtra(key_total, 0);
+            String strtot = String.valueOf(inttot);
+            display_tot.setText(strtot);
 
 
 
-          /*  EditText hp_srore_1 = (EditText) findViewById(R.id.exp_1);
-            String sTextFromET = hp_srore_1.getText().toString();
-            //int nIntFromET = new Integer(sTextFromET).intValue();*/
+        //  display_tot.setValue(intent.getIntExtra(key_total,0));
+        // String tou = hp_1.getText().toString();
+        //String uu = intent.getIntExtra(key_five, 1);
+
+        //  hp_5 = intent.getIntExtra(key_five, 1);
 
 
-
-            getdate.setText(intent.getStringExtra(key_year));
-           // String tou = hp_1.getText().toString();
-            //String uu = intent.getIntExtra(key_five, 1);
-
-          //  hp_5 = intent.getIntExtra(key_five, 1);
-
-
-            //hp_1.setText(intent.getIntExtra(key_one, 0));
-          /*  hp_1.setValue(intent.getIntExtra(key_one, 1));
+        //hp_1.setText(intent.getIntExtra(key_one, 0));
+         /*  hp_1.setValue(intent.getIntExtra(key_one, 1));
             hp_2.setText(intent.getIntExtra(key_two, 1));
             hp_3.setText(intent.getIntExtra(key_three, 1));
             hp_4.setText(intent.getIntExtra(key_four, 1));
@@ -137,8 +207,6 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
         } else {
             setTitle("Enter Your Data");
         }
-
-
 
         home_expense_total();
 
@@ -450,9 +518,9 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
         data.putExtra(key_total, expense_total);
 
         int id = getIntent().getIntExtra(key_id, -1);
-        if (id != 1){
+        if (id != 1) {
 
-            data.putExtra(key_id,id);
+            data.putExtra(key_id, id);
         }
         setResult(RESULT_OK, data);
         finish();

@@ -24,6 +24,9 @@ public interface Expense_Dao {
     @Delete
     void delete(Expense expense);
 
+    @Query(" SELECT * FROM expense_table WHERE id = :expenseId")
+    Expense getExpenseById (int expenseId);
+
     @Query("SELECT * FROM expense_table ")
     LiveData<List<Expense>> getAllExpense();
 }

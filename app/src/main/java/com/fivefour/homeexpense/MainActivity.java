@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }).attachToRecyclerView(recyclerView);
 
         // recycler view item click listner implementing
-       expenseAdapter.setOnItemClickListener(new Expense_Adapter.OnItemClickListener() {
+      expenseAdapter.setOnItemClickListener(new Expense_Adapter.OnItemClickListener() {
            @Override
            public void onItemClick(Expense expense) {
 
@@ -123,6 +123,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                intent.putExtra(Expense_Edit_calculation_Activity.key_id, expense.getId());
                intent.putExtra(Expense_Edit_calculation_Activity.key_year, expense.getYearmonth());
                intent.putExtra(Expense_Edit_calculation_Activity.key_one, expense.getExp_one());
+               int chumma = expense.getExp_one();
+               Toast.makeText(MainActivity.this, chumma+"got", Toast.LENGTH_SHORT).show();
                intent.putExtra(Expense_Edit_calculation_Activity.key_two, expense.getExp_two());
                intent.putExtra(Expense_Edit_calculation_Activity.key_three, expense.getExp_three());
                intent.putExtra(Expense_Edit_calculation_Activity.key_four, expense.getExp_four());
@@ -140,10 +142,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                intent.putExtra(Expense_Edit_calculation_Activity.key_sixteen, expense.getExp_sixteen());
                intent.putExtra(Expense_Edit_calculation_Activity.key_seventeen, expense.getExp_seventeen());
                intent.putExtra(Expense_Edit_calculation_Activity.key_total, expense.getExp_total());
-               //startActivityForResult(intent, UPDATE_EXPENSE_REQUEST);
                startActivityForResult(intent, UPDATE_EXPENSE_REQUEST);
            }
        });
+
+
+
     }
 
 
