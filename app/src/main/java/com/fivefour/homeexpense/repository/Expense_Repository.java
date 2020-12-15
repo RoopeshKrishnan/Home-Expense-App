@@ -26,6 +26,12 @@ public class Expense_Repository {
 
     }
 
+    //update
+    public void update(Expense expense) {
+        new UpdateExpesneAsyncTASK(expense_dao).execute(expense);
+
+    }
+
     public void delete(Expense expense){
 
         new DeleteExpesneAsyncTASK(expense_dao).execute(expense);
@@ -36,6 +42,7 @@ public class Expense_Repository {
         return allExpense;
     }
 
+    // Insert asyncTask
     private static class InsertExpesneAsyncTASK extends AsyncTask<Expense, Void, Void> {
 
         private Expense_Dao expense_dao;
@@ -49,6 +56,24 @@ public class Expense_Repository {
         @Override
         protected Void doInBackground(Expense... expenses) {
             expense_dao.insert(expenses[0]);
+            return null;
+        }
+    }
+
+    // Update AsyncTask
+    private static class UpdateExpesneAsyncTASK extends AsyncTask<Expense, Void, Void> {
+
+        private Expense_Dao expense_dao;
+
+        private UpdateExpesneAsyncTASK(Expense_Dao expense_dao) {
+
+            this.expense_dao = expense_dao;
+
+        }
+
+        @Override
+        protected Void doInBackground(Expense... expenses) {
+            expense_dao.update(expenses[0]);
             return null;
         }
     }

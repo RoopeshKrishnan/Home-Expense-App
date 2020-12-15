@@ -1,40 +1,28 @@
 package com.fivefour.homeexpense;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.fivefour.homeexpense.adapter.Expense_Adapter;
-import com.fivefour.homeexpense.db.Expense;
-import com.fivefour.homeexpense.db.Expense_Database;
 import com.fivefour.homeexpense.model.Expense_VIewModel;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
-import java.util.Locale;
 
 import static android.view.WindowManager.*;
-import static androidx.lifecycle.ViewModelProviders.*;
-import static java.util.Locale.*;
 
-public class Expense_calculation_Activity extends AppCompatActivity {
+public class Expense_Edit_calculation_Activity extends AppCompatActivity {
+    public static final String key_id = "com.fivefour.homeexpense.key_id";
     public static final String key_year = "com.fivefour.homeexpense.key_year";
     public static final String key_one = "com.fivefour.homeexpense.key_one";
     public static final String key_two = "com.fivefour.homeexpense.key_two";
@@ -58,8 +46,9 @@ public class Expense_calculation_Activity extends AppCompatActivity {
 
     private Expense_VIewModel expense_vIewModel;
     public TextView putdate, getdate, cal, sum, display_tot;
-    public EditText hp_1, hp_2, hp_3, hp_4, hp_5, hp_6, hp_7, hp_8, hp_9, hp_10, hp_11, hp_12, hp_13, hp_14, hp_15, hp_16, hp_17;
+    public EditText hp_onne, hp_1, hp_2, hp_3, hp_4, hp_5, hp_6, hp_7, hp_8, hp_9, hp_10, hp_11, hp_12, hp_13, hp_14, hp_15, hp_16, hp_17;
     Button okbutton;
+    Toolbar toolbar;
     RecyclerView recyclerView;
     public DatePickerDialog.OnDateSetListener mDateSetListner;
 
@@ -70,26 +59,10 @@ public class Expense_calculation_Activity extends AppCompatActivity {
 
         getWindow().setSoftInputMode(
                 LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        home_expense_total();
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        //RecyclerView
-        /*recyclerView= findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        recyclerView.setHasFixedSize(true);
-
-        Expense_Adapter expenseAdapter = new Expense_Adapter();
-        recyclerView.setAdapter(expenseAdapter);*/
-
-
-        /*expense_vIewModel = ViewModelProviders.of(this).get(Expense_VIewModel.class);
-        expense_vIewModel.getAllExpense().observe(this, new Observer<List<Expense>>() {
-            @Override
-            public void onChanged(List<Expense> expenses) {
-                //update recycler view
-                Toast.makeText(Expense_calculation_Activity.this, "onChanged", Toast.LENGTH_SHORT).show();
-            }
-        });*/
 
         putdate = (TextView) findViewById(R.id.putdate);
         getdate = (TextView) findViewById(R.id.getdate);
@@ -114,31 +87,68 @@ public class Expense_calculation_Activity extends AppCompatActivity {
         hp_17 = (EditText) findViewById(R.id.exp_17);
 
 
+
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.bt_cancel);
+
+
+        Intent intent = getIntent();
+
+
+
+        if (intent.hasExtra(key_id))
+        {
+            setTitle("Edit");
+
+
+
+          /*  EditText hp_srore_1 = (EditText) findViewById(R.id.exp_1);
+            String sTextFromET = hp_srore_1.getText().toString();
+            //int nIntFromET = new Integer(sTextFromET).intValue();*/
+
+
+
+            getdate.setText(intent.getStringExtra(key_year));
+           // String tou = hp_1.getText().toString();
+            //String uu = intent.getIntExtra(key_five, 1);
+
+          //  hp_5 = intent.getIntExtra(key_five, 1);
+
+
+            //hp_1.setText(intent.getIntExtra(key_one, 0));
+          /*  hp_1.setValue(intent.getIntExtra(key_one, 1));
+            hp_2.setText(intent.getIntExtra(key_two, 1));
+            hp_3.setText(intent.getIntExtra(key_three, 1));
+            hp_4.setText(intent.getIntExtra(key_four, 1));
+            hp_5.setText(intent.getIntExtra(key_five, 1));
+            hp_6.setText(intent.getIntExtra(key_six, 1));
+            hp_7.setText(intent.getIntExtra(key_seven, 1));
+            hp_8.setText(intent.getIntExtra(key_eight, 1));
+            hp_9.setText(intent.getIntExtra(key_nine, 1));
+            hp_10.setText(intent.getIntExtra(key_ten, 1));
+            hp_11.setText(intent.getIntExtra(key_eleven, 1));
+            hp_12.setText(intent.getIntExtra(key_twelve, 1));
+            hp_13.setText(intent.getIntExtra(key_thirteen, 1));
+            hp_14.setText(intent.getIntExtra(key_fourteen, 1));
+            hp_15.setText(intent.getIntExtra(key_fifteen, 1));
+            hp_16.setText(intent.getIntExtra(key_sixteen, 1));
+            hp_17.setText(intent.getIntExtra(key_seventeen, 1));
+            display_tot.setText(intent.getIntExtra(key_total, 1));*/
+
+        } else {
+            setTitle("Enter Your Data");
+        }
+
+
+
+        home_expense_total();
+
+
         okbutton = (Button) findViewById(R.id.bt_ok);
         okbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Okbutton_Click_actions();               /* MyDatabaseHelper myDB = new MyDatabaseHelper(Expense_calculation_Activity.this);
-                myDB.addExpense (getdate.getText().toString(),
-                        Integer.valueOf(hp_1.getText().toString().trim()),
-                        Integer.valueOf(hp_2.getText().toString().trim()),
-                        Integer.valueOf(hp_3.getText().toString().trim()),
-                        Integer.valueOf(hp_4.getText().toString().trim()),
-                        Integer.valueOf(hp_5.getText().toString().trim()),
-                        Integer.valueOf(hp_6.getText().toString().trim()),
-                        Integer.valueOf(hp_7.getText().toString().trim()),
-                        Integer.valueOf(hp_8.getText().toString().trim()),
-                        Integer.valueOf(hp_9.getText().toString().trim()),
-                        Integer.valueOf(hp_10.getText().toString().trim()),
-                        Integer.valueOf(hp_11.getText().toString().trim()),
-                        Integer.valueOf(hp_12.getText().toString().trim()),
-                        Integer.valueOf(hp_13.getText().toString().trim()),
-                        Integer.valueOf(hp_14.getText().toString().trim()),
-                        Integer.valueOf(hp_15.getText().toString().trim()),
-                        Integer.valueOf(hp_16.getText().toString().trim()),
-                        Integer.valueOf(hp_17.getText().toString().trim()),
-                        Integer.valueOf(display_tot.getText().toString().trim() ));*/
+                Okbutton_Click_actions();
             }
         });
 
@@ -150,7 +160,7 @@ public class Expense_calculation_Activity extends AppCompatActivity {
                 int year = calendar.get(Calendar.YEAR);
                 int month = calendar.get(Calendar.MONTH);
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog dialog = new DatePickerDialog(Expense_calculation_Activity.this,
+                DatePickerDialog dialog = new DatePickerDialog(Expense_Edit_calculation_Activity.this,
                         android.R.style.Theme_Material_Dialog_MinWidth,
                         mDateSetListner,
                         year, month, day);
@@ -419,27 +429,32 @@ public class Expense_calculation_Activity extends AppCompatActivity {
         int expense_total = Integer.parseInt(display_tot.getText().toString());
 
         Intent data = new Intent();
-        data.putExtra(key_year,year_name_holder);
-        data.putExtra(key_one,expense1);
-        data.putExtra(key_two,expense2);
-        data.putExtra(key_three,expense3);
-        data.putExtra(key_four,expense4);
-        data.putExtra(key_five,expense5);
-        data.putExtra(key_six,expense6);
-        data.putExtra(key_seven,expense7);
-        data.putExtra(key_eight,expense8);
-        data.putExtra(key_nine,expense9);
-        data.putExtra(key_ten,expense10);
-        data.putExtra(key_eleven,expense11);
-        data.putExtra(key_twelve,expense12);
-        data.putExtra(key_thirteen,expense13);
-        data.putExtra(key_fourteen,expense14);
-        data.putExtra(key_fifteen,expense15);
-        data.putExtra(key_sixteen,expense16);
-        data.putExtra(key_seventeen,expense17);
-        data.putExtra(key_total,expense_total);
+        data.putExtra(key_year, year_name_holder);
+        data.putExtra(key_one, expense1);
+        data.putExtra(key_two, expense2);
+        data.putExtra(key_three, expense3);
+        data.putExtra(key_four, expense4);
+        data.putExtra(key_five, expense5);
+        data.putExtra(key_six, expense6);
+        data.putExtra(key_seven, expense7);
+        data.putExtra(key_eight, expense8);
+        data.putExtra(key_nine, expense9);
+        data.putExtra(key_ten, expense10);
+        data.putExtra(key_eleven, expense11);
+        data.putExtra(key_twelve, expense12);
+        data.putExtra(key_thirteen, expense13);
+        data.putExtra(key_fourteen, expense14);
+        data.putExtra(key_fifteen, expense15);
+        data.putExtra(key_sixteen, expense16);
+        data.putExtra(key_seventeen, expense17);
+        data.putExtra(key_total, expense_total);
 
-        setResult(RESULT_OK,data);
+        int id = getIntent().getIntExtra(key_id, -1);
+        if (id != 1){
+
+            data.putExtra(key_id,id);
+        }
+        setResult(RESULT_OK, data);
         finish();
 
 

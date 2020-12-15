@@ -17,6 +17,7 @@ import java.util.List;
 public class Expense_Adapter extends RecyclerView.Adapter<Expense_Adapter.ExpenseHolder> {
 
     private List<Expense> expenses = new ArrayList<>();
+    private OnItemClickListener listener;
 
     @NonNull
     @Override
@@ -29,9 +30,9 @@ public class Expense_Adapter extends RecyclerView.Adapter<Expense_Adapter.Expens
 
     @Override
     public void onBindViewHolder(@NonNull ExpenseHolder holder, int position) {
-         Expense currentExpense = expenses.get(position);
-         holder.yearHolder.setText(currentExpense.getYearmonth());
-         holder.totalHolder.setText(String.valueOf(currentExpense.getExp_total()));
+        Expense currentExpense = expenses.get(position);
+        holder.yearHolder.setText(currentExpense.getYearmonth());
+        holder.totalHolder.setText(String.valueOf(currentExpense.getExp_total()));
 
     }
 
@@ -40,18 +41,20 @@ public class Expense_Adapter extends RecyclerView.Adapter<Expense_Adapter.Expens
         return expenses.size();
     }
 
-// Update recycler view with each cahnges
-    public void updateExpenseon(List<Expense> expenses){
+    // Update recycler view with each cahnges
+    public void updateExpenseon(List<Expense> expenses) {
 
         this.expenses = expenses;
         notifyDataSetChanged();
     }
 
     // for item positions
-    public Expense getExpenseAt(int position){
+    public Expense getExpenseAt(int position) {
         return expenses.get(position);
     }
 
+
+    // ViewHolder
     class ExpenseHolder extends RecyclerView.ViewHolder {
 
         private TextView yearHolder;
@@ -63,6 +66,30 @@ public class Expense_Adapter extends RecyclerView.Adapter<Expense_Adapter.Expens
             yearHolder = itemView.findViewById(R.id.holder_year);
             totalHolder = itemView.findViewById(R.id.holder_total);
 
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+
+                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(expenses.get(position));
+                    }
+                }
+            });
+
         }
     }
+
+
+    public interface OnItemClickListener {
+        void onItemClick(Expense expense);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+
+        this.listener = listener;
+
+    }
+
 }
