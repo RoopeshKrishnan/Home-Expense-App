@@ -9,12 +9,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.*;
+
 
 import com.fivefour.homeexpense.adapter.Expense_Adapter;
 import com.fivefour.homeexpense.db.Expense;
 import com.fivefour.homeexpense.model.Expense_VIewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -30,16 +33,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.DialogInterface.*;
 import static androidx.appcompat.app.AlertDialog.*;
+import static androidx.recyclerview.widget.ItemTouchHelper.*;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     public static final int ADD_EXPENSE_REQUEST = 1;
     public static final int UPDATE_EXPENSE_REQUEST = 2;
+
+    private boolean doubleBackToExitPressedOnce = false;
+
 
     DrawerLayout drawer;
     NavigationView navigationView;
@@ -48,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FloatingActionButton fab;
     RecyclerView recyclerView;
     Expense_VIewModel expense_vIewModel;
+    Expense_Adapter expenseAdapter;
+    private ArrayList<Expense> expense;
 
 
     @Override
@@ -57,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+       /* getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_nav_drawer_icon);*/
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -97,8 +110,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
-                ItemTouchHelper.LEFT) {
+
+
+
+        new ItemTouchHelper(new SimpleCallback(0,
+                LEFT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return false;
@@ -107,75 +123,80 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
-                expense_vIewModel.delete(expenseAdapter.getExpenseAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(MainActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
+                new AlertDialog.Builder(MainActivity.this)
+                        .setMessage("Delete Note?")
+                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                expense_vIewModel.delete(expenseAdapter.getExpenseAt(viewHolder.getAdapterPosition()));
+                                expenseAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+                                showEmptyView();
+
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                recyclerView.getAdapter().notifyItemChanged(viewHolder.getAdapterPosition());
+
+
+                            }
+                        })
+                        .setCancelable(false)
+                        .create().show();
 
             }
+
+                //expense_vIewModel.delete(expenseAdapter.getExpenseAt(viewHolder.getAdapterPosition()));
+              // Toast.makeText(MainActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
+
+
+
         }).attachToRecyclerView(recyclerView);
 
+
+
+
+
+
+
+
+
         // recycler view item click listner implementing
-      expenseAdapter.setOnItemClickListener(new Expense_Adapter.OnItemClickListener() {
-           @Override
-           public void onItemClick(Expense expense) {
+        expenseAdapter.setOnItemClickListener(new Expense_Adapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Expense expense) {
 
-               Intent intent = new Intent(MainActivity.this, Expense_Edit_calculation_Activity.class);
+                Intent intent = new Intent(MainActivity.this, Expense_Edit_calculation_Activity.class);
 
-               intent.putExtra(Expense_Edit_calculation_Activity.key_id, expense.getId());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_year, expense.getYearmonth());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_one, expense.getExp_one());
-               int chumma = expense.getExp_one();
-               Toast.makeText(MainActivity.this, chumma+"got", Toast.LENGTH_SHORT).show();
-               intent.putExtra(Expense_Edit_calculation_Activity.key_two, expense.getExp_two());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_three, expense.getExp_three());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_four, expense.getExp_four());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_five, expense.getExp_five());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_six, expense.getExp_six());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_seven, expense.getExp_seven());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_eight, expense.getExp_eight());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_nine, expense.getExp_nine());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_ten, expense.getExp_ten());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_eleven, expense.getExp_eleven());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_twelve, expense.getExp_twelve());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_thirteen, expense.getExp_thirteen());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_fourteen, expense.getExp_fourteen());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_fifteen, expense.getExp_fifteen());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_sixteen, expense.getExp_sixteen());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_seventeen, expense.getExp_seventeen());
-               intent.putExtra(Expense_Edit_calculation_Activity.key_total, expense.getExp_total());
-               startActivityForResult(intent, UPDATE_EXPENSE_REQUEST);
-           }
-       });
-
+                intent.putExtra(Expense_Edit_calculation_Activity.key_id, expense.getId());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_year, expense.getYearmonth());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_one, expense.getExp_one());
+                int chumma = expense.getExp_one();
+                intent.putExtra(Expense_Edit_calculation_Activity.key_two, expense.getExp_two());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_three, expense.getExp_three());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_four, expense.getExp_four());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_five, expense.getExp_five());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_six, expense.getExp_six());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_seven, expense.getExp_seven());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_eight, expense.getExp_eight());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_nine, expense.getExp_nine());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_ten, expense.getExp_ten());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_eleven, expense.getExp_eleven());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_twelve, expense.getExp_twelve());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_thirteen, expense.getExp_thirteen());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_fourteen, expense.getExp_fourteen());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_fifteen, expense.getExp_fifteen());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_sixteen, expense.getExp_sixteen());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_seventeen, expense.getExp_seventeen());
+                intent.putExtra(Expense_Edit_calculation_Activity.key_total, expense.getExp_total());
+                startActivityForResult(intent, UPDATE_EXPENSE_REQUEST);
+            }
+        });
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     @Override
@@ -214,16 +235,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             Expense expense = new Expense(receive_year, receive_one, receive_two, receive_three, receive_four, receive_five, receive_six, receive_seven, receive_eight, receive_nine, receive_ten, receive_eleven, receive_twleve, receive_thirteen, receive_fourteen, receive_fifteen, receive_sixteen, receive_seventeen, receive_total);
             expense_vIewModel.insert(expense);
-            Toast.makeText(this, "Added successfully", Toast.LENGTH_SHORT).show();
+            //  Toast.makeText(this, "Added successfully", Toast.LENGTH_SHORT).show();
 
 
-        } else if (requestCode == UPDATE_EXPENSE_REQUEST && resultCode == RESULT_OK){
+        } else if (requestCode == UPDATE_EXPENSE_REQUEST && resultCode == RESULT_OK) {
 
-                int id = data.getIntExtra(Expense_Edit_calculation_Activity.key_id, -1);
-                if (id == -1){
-                    Toast.makeText(this, "Can't Update", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+            int id = data.getIntExtra(Expense_Edit_calculation_Activity.key_id, -1);
+            if (id == -1) {
+                //  Toast.makeText(this, "Can't Update", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             String receive_year = data.getStringExtra(Expense_Edit_calculation_Activity.key_year);
             int receive_one = data.getIntExtra(Expense_Edit_calculation_Activity.key_one, 0);
@@ -247,15 +268,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Expense expense = new Expense(receive_year, receive_one, receive_two, receive_three, receive_four, receive_five, receive_six, receive_seven, receive_eight, receive_nine, receive_ten, receive_eleven, receive_twleve, receive_thirteen, receive_fourteen, receive_fifteen, receive_sixteen, receive_seventeen, receive_total);
             expense.setId(id);
             expense_vIewModel.update(expense);
-            Toast.makeText(this, "Updated successfully", Toast.LENGTH_SHORT).show();
-        }else {
+            //   Toast.makeText(this, "Updated successfully", Toast.LENGTH_SHORT).show();
+        } else {
 
-            Toast.makeText(this, "Something Wrong", Toast.LENGTH_SHORT).show();
+            //  Toast.makeText(this, "Something Wrong", Toast.LENGTH_SHORT).show();
 
         }
     }
 
-    @Override
+  /*  @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -287,7 +308,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
         }
+    }*/
+
+
+    @Override
+    public void onBackPressed() {
+
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -314,4 +356,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+    private void showEmptyView() {
+        int i=0;
+    }
+
 }

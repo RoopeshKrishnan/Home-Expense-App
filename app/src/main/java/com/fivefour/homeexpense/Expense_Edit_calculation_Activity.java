@@ -58,7 +58,7 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
     private Expense_VIewModel expense_vIewModel;
     public TextView putdate, getdate, cal, sum, display_tot;
     public EditText hp_onne, hp_1, hp_2, hp_3, hp_4, hp_5, hp_6, hp_7, hp_8, hp_9, hp_10, hp_11, hp_12, hp_13, hp_14, hp_15, hp_16, hp_17;
-    Button okbutton;
+    Button okbutton, cancel_button;
     Toolbar toolbar;
     RecyclerView recyclerView;
     public DatePickerDialog.OnDateSetListener mDateSetListner;
@@ -73,6 +73,8 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
         putdate = (TextView) findViewById(R.id.putdate);
@@ -187,6 +189,15 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
         } else {
             setTitle("Enter Your Data");
         }
+
+        cancel_button =(Button)findViewById(R.id.cancel_button1_ae);
+        cancel_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent cancelIntent = new Intent(Expense_Edit_calculation_Activity.this, MainActivity.class);
+                startActivity(cancelIntent);
+            }
+        });
 
 
         okbutton = (Button) findViewById(R.id.bt_ok);
@@ -519,7 +530,7 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
         }else if (hp_17.length() == 0) {
             hp_17.setError("If nothing add 0");
         }
-      
+
         else {
 
 
