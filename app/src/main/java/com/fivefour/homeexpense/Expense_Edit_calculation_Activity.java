@@ -8,6 +8,8 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -93,19 +95,18 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.bt_cancel);
 
 
-      Intent intent = getIntent();
-      if (intent.hasExtra(key_id))
-        {
+        Intent intent = getIntent();
+        if (intent.hasExtra(key_id)) {
             setTitle("Edit");
-         int againi;
+            int againi;
 
 
-        getdate.setText(intent.getStringExtra(key_year));
+            getdate.setText(intent.getStringExtra(key_year));
 
 
-        int int1 = intent.getIntExtra(key_one, 0);
-        String str1 = String.valueOf(int1);
-        hp_1.setText(str1);
+            int int1 = intent.getIntExtra(key_one, 0);
+            String str1 = String.valueOf(int1);
+            hp_1.setText(str1);
 
             int int2 = intent.getIntExtra(key_two, 0);
             String str2 = String.valueOf(int2);
@@ -120,7 +121,8 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
             hp_4.setText(str4);
 
             int int5 = intent.getIntExtra(key_five, 0);
-            String str5 = String.valueOf(int5);
+            String str5 = String.valueOf(int5
+            );
             hp_5.setText(str5);
 
             int int6 = intent.getIntExtra(key_six, 0);
@@ -176,40 +178,10 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
             display_tot.setText(strtot);
 
 
-
-        //  display_tot.setValue(intent.getIntExtra(key_total,0));
-        // String tou = hp_1.getText().toString();
-        //String uu = intent.getIntExtra(key_five, 1);
-
-        //  hp_5 = intent.getIntExtra(key_five, 1);
-
-
-        //hp_1.setText(intent.getIntExtra(key_one, 0));
-         /*  hp_1.setValue(intent.getIntExtra(key_one, 1));
-            hp_2.setText(intent.getIntExtra(key_two, 1));
-            hp_3.setText(intent.getIntExtra(key_three, 1));
-            hp_4.setText(intent.getIntExtra(key_four, 1));
-            hp_5.setText(intent.getIntExtra(key_five, 1));
-            hp_6.setText(intent.getIntExtra(key_six, 1));
-            hp_7.setText(intent.getIntExtra(key_seven, 1));
-            hp_8.setText(intent.getIntExtra(key_eight, 1));
-            hp_9.setText(intent.getIntExtra(key_nine, 1));
-            hp_10.setText(intent.getIntExtra(key_ten, 1));
-            hp_11.setText(intent.getIntExtra(key_eleven, 1));
-            hp_12.setText(intent.getIntExtra(key_twelve, 1));
-            hp_13.setText(intent.getIntExtra(key_thirteen, 1));
-            hp_14.setText(intent.getIntExtra(key_fourteen, 1));
-            hp_15.setText(intent.getIntExtra(key_fifteen, 1));
-            hp_16.setText(intent.getIntExtra(key_sixteen, 1));
-            hp_17.setText(intent.getIntExtra(key_seventeen, 1));
-            display_tot.setText(intent.getIntExtra(key_total, 1));*/
-
         } else {
             setTitle("Enter Your Data");
         }
-
-        home_expense_total();
-
+        
 
         okbutton = (Button) findViewById(R.id.bt_ok);
         okbutton.setOnClickListener(new View.OnClickListener() {
@@ -324,38 +296,15 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
             }
         };
 
-    }
 
-    // outside oncreate method
-
-    //calculating expense
-    public void home_expense_total() {
-
-        cal = (TextView) findViewById(R.id.exp_calculate);
-        sum = (TextView) findViewById(R.id.exp_total);
-
-        hp_1 = (EditText) findViewById(R.id.exp_1);
-        hp_2 = (EditText) findViewById(R.id.exp_2);
-        hp_3 = (EditText) findViewById(R.id.exp_3);
-        hp_4 = (EditText) findViewById(R.id.exp_4);
-        hp_5 = (EditText) findViewById(R.id.exp_5);
-        hp_6 = (EditText) findViewById(R.id.exp_6);
-        hp_7 = (EditText) findViewById(R.id.exp_7);
-        hp_8 = (EditText) findViewById(R.id.exp_8);
-        hp_9 = (EditText) findViewById(R.id.exp_9);
-        hp_10 = (EditText) findViewById(R.id.exp_10);
-        hp_11 = (EditText) findViewById(R.id.exp_11);
-        hp_12 = (EditText) findViewById(R.id.exp_12);
-        hp_13 = (EditText) findViewById(R.id.exp_13);
-        hp_14 = (EditText) findViewById(R.id.exp_14);
-        hp_15 = (EditText) findViewById(R.id.exp_15);
-        hp_16 = (EditText) findViewById(R.id.exp_16);
-        hp_17 = (EditText) findViewById(R.id.exp_17);
-
-
-        cal.setOnClickListener(new View.OnClickListener() {
+        TextWatcher textWatcher = new TextWatcher() {
             @Override
-            public void onClick(View view) {
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                 int one, two;
                 int three = 0, four = 0, five = 0, six = 0, seven = 0, eight = 0, nine = 0, ten = 0, eleven = 0,
@@ -464,13 +413,40 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
                     seventeen = Integer.parseInt(hp_17.getText().toString());
                 }
 
-                result = one + two + three + four + five + six + seven + eight + nine + ten + eleven + twelve + thirteen + fourteen + fifteen + sixteen + seventeen;
-                sum.setText(String.valueOf(result + ""));
+                display_tot.setText(String.valueOf(one + two + three + four + five + six + seven + eight +
+                        nine + ten + eleven + twelve + thirteen + fourteen + fifteen + sixteen + seventeen));
+
+
             }
-        });
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        };
+
+        hp_1.addTextChangedListener(textWatcher);
+        hp_2.addTextChangedListener(textWatcher);
+        hp_3.addTextChangedListener(textWatcher);
+        hp_4.addTextChangedListener(textWatcher);
+        hp_5.addTextChangedListener(textWatcher);
+        hp_6.addTextChangedListener(textWatcher);
+        hp_7.addTextChangedListener(textWatcher);
+        hp_8.addTextChangedListener(textWatcher);
+        hp_9.addTextChangedListener(textWatcher);
+        hp_10.addTextChangedListener(textWatcher);
+        hp_11.addTextChangedListener(textWatcher);
+        hp_12.addTextChangedListener(textWatcher);
+        hp_13.addTextChangedListener(textWatcher);
+        hp_14.addTextChangedListener(textWatcher);
+        hp_15.addTextChangedListener(textWatcher);
+        hp_16.addTextChangedListener(textWatcher);
+        hp_17.addTextChangedListener(textWatcher);
 
 
     }
+
+    // outside oncreate method
 
 
     private void Okbutton_Click_actions() {
