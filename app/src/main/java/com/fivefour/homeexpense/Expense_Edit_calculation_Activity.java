@@ -9,12 +9,15 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.fivefour.homeexpense.db.Expense;
 import com.fivefour.homeexpense.db.Expense_Dao;
@@ -23,7 +26,10 @@ import com.fivefour.homeexpense.model.Expense_VIewModel;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import static android.text.TextUtils.*;
+import static android.util.Log.*;
 import static android.view.WindowManager.*;
+import static android.widget.Toast.*;
 
 public class Expense_Edit_calculation_Activity extends AppCompatActivity {
     public static final String key_id = "com.fivefour.homeexpense.key_id";
@@ -181,7 +187,7 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
         } else {
             setTitle("Enter Your Data");
         }
-        
+
 
         okbutton = (Button) findViewById(R.id.bt_ok);
         okbutton.setOnClickListener(new View.OnClickListener() {
@@ -452,56 +458,121 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
     private void Okbutton_Click_actions() {
 
         String year_name_holder = getdate.getText().toString();
-        int expense1 = Integer.parseInt(hp_1.getText().toString());
-        int expense2 = Integer.parseInt(hp_2.getText().toString());
-        int expense3 = Integer.parseInt(hp_3.getText().toString());
-        int expense4 = Integer.parseInt(hp_4.getText().toString());
-        int expense5 = Integer.parseInt(hp_5.getText().toString());
-        int expense6 = Integer.parseInt(hp_6.getText().toString());
-        int expense7 = Integer.parseInt(hp_7.getText().toString());
-        int expense8 = Integer.parseInt(hp_8.getText().toString());
-        int expense9 = Integer.parseInt(hp_9.getText().toString());
-        int expense10 = Integer.parseInt(hp_10.getText().toString());
-        int expense11 = Integer.parseInt(hp_11.getText().toString());
-        int expense12 = Integer.parseInt(hp_12.getText().toString());
-        int expense13 = Integer.parseInt(hp_13.getText().toString());
-        int expense14 = Integer.parseInt(hp_14.getText().toString());
-        int expense15 = Integer.parseInt(hp_15.getText().toString());
-        int expense16 = Integer.parseInt(hp_16.getText().toString());
-        int expense17 = Integer.parseInt(hp_17.getText().toString());
 
-        int expense_total = Integer.parseInt(display_tot.getText().toString());
 
-        Intent data = new Intent();
-        data.putExtra(key_year, year_name_holder);
-        data.putExtra(key_one, expense1);
-        data.putExtra(key_two, expense2);
-        data.putExtra(key_three, expense3);
-        data.putExtra(key_four, expense4);
-        data.putExtra(key_five, expense5);
-        data.putExtra(key_six, expense6);
-        data.putExtra(key_seven, expense7);
-        data.putExtra(key_eight, expense8);
-        data.putExtra(key_nine, expense9);
-        data.putExtra(key_ten, expense10);
-        data.putExtra(key_eleven, expense11);
-        data.putExtra(key_twelve, expense12);
-        data.putExtra(key_thirteen, expense13);
-        data.putExtra(key_fourteen, expense14);
-        data.putExtra(key_fifteen, expense15);
-        data.putExtra(key_sixteen, expense16);
-        data.putExtra(key_seventeen, expense17);
-        data.putExtra(key_total, expense_total);
 
-        int id = getIntent().getIntExtra(key_id, -1);
-        if (id != 1) {
 
-            data.putExtra(key_id, id);
+     /*   int expense1 = Integer.parseInt(hp_1.getText().toString());
+        String strexps1 = String.valueOf(expense1);
+        int expenseTest = Integer.parseInt(hp_1.getText().toString());
+
+
+        //int holdingone = Integer.parseInt(strexps1.toString());
+       // hp_1.setText(str1);
+        if(TextUtils.isEmpty(strexps1)){
+
+
+          hp_1.setError("add data");
+
+        }else {
+             expenseTest = Integer.parseInt(hp_1.getText().toString());
         }
-        setResult(RESULT_OK, data);
-        finish();
+        int orginalstoree = expenseTest;
+        Toast.makeText(Expense_Edit_calculation_Activity.this, orginalstoree+"haha", LENGTH_SHORT).show();
+
+        // Log.d("MYINT", "value is" + orginalstoree);*/
+
+        if (getdate.length() == 0) {
+            getdate.setError("pick a date");
+        } else if (hp_1.length() == 0) {
+            hp_1.setError("If nothing add 0");
+        }else if (hp_2.length() == 0) {
+            hp_2.setError("If nothing add 0");
+        }else if (hp_3.length() == 0) {
+            hp_3.setError("If nothing add 0");
+        }else if (hp_4.length() == 0) {
+            hp_4.setError("If nothing add 0");
+        }else if (hp_5.length() == 0) {
+            hp_5.setError("If nothing add 0");
+        }else if (hp_6.length() == 0) {
+            hp_6.setError("If nothing add 0");
+        }else if (hp_7.length() == 0) {
+            hp_7.setError("If nothing add 0");
+        }else if (hp_8.length() == 0) {
+            hp_8.setError("If nothing add 0");
+        }else if (hp_9.length() == 0) {
+            hp_9.setError("If nothing add 0");
+        }else if (hp_10.length() == 0) {
+            hp_10.setError("If nothing add 0");
+        }else if (hp_11.length() == 0) {
+            hp_11.setError("If nothing add 0");
+        }else if (hp_12.length() == 0) {
+            hp_12.setError("If nothing add 0");
+        }else if (hp_13.length() == 0) {
+            hp_13.setError("If nothing add 0");
+        }else if (hp_14.length() == 0) {
+            hp_14.setError("If nothing add 0");
+        }else if (hp_15.length() == 0) {
+            hp_15.setError("If nothing add 0");
+        }else if (hp_16.length() == 0) {
+            hp_16.setError("If nothing add 0");
+        }else if (hp_17.length() == 0) {
+            hp_17.setError("If nothing add 0");
+        }
+      
+        else {
 
 
+            int expense1 = Integer.parseInt(hp_1.getText().toString());
+            int expense2 = Integer.parseInt(hp_2.getText().toString());
+            int expense3 = Integer.parseInt(hp_3.getText().toString());
+            int expense4 = Integer.parseInt(hp_4.getText().toString());
+            int expense5 = Integer.parseInt(hp_5.getText().toString());
+            int expense6 = Integer.parseInt(hp_6.getText().toString());
+            int expense7 = Integer.parseInt(hp_7.getText().toString());
+            int expense8 = Integer.parseInt(hp_8.getText().toString());
+            int expense9 = Integer.parseInt(hp_9.getText().toString());
+            int expense10 = Integer.parseInt(hp_10.getText().toString());
+            int expense11 = Integer.parseInt(hp_11.getText().toString());
+            int expense12 = Integer.parseInt(hp_12.getText().toString());
+            int expense13 = Integer.parseInt(hp_13.getText().toString());
+            int expense14 = Integer.parseInt(hp_14.getText().toString());
+            int expense15 = Integer.parseInt(hp_15.getText().toString());
+            int expense16 = Integer.parseInt(hp_16.getText().toString());
+            int expense17 = Integer.parseInt(hp_17.getText().toString());
+
+            int expense_total = Integer.parseInt(display_tot.getText().toString());
+
+            Intent data = new Intent();
+            data.putExtra(key_year, year_name_holder);
+            data.putExtra(key_one, expense1);
+            data.putExtra(key_two, expense2);
+            data.putExtra(key_three, expense3);
+            data.putExtra(key_four, expense4);
+            data.putExtra(key_five, expense5);
+            data.putExtra(key_six, expense6);
+            data.putExtra(key_seven, expense7);
+            data.putExtra(key_eight, expense8);
+            data.putExtra(key_nine, expense9);
+            data.putExtra(key_ten, expense10);
+            data.putExtra(key_eleven, expense11);
+            data.putExtra(key_twelve, expense12);
+            data.putExtra(key_thirteen, expense13);
+            data.putExtra(key_fourteen, expense14);
+            data.putExtra(key_fifteen, expense15);
+            data.putExtra(key_sixteen, expense16);
+            data.putExtra(key_seventeen, expense17);
+            data.putExtra(key_total, expense_total);
+
+            int id = getIntent().getIntExtra(key_id, -1);
+            if (id != 1) {
+
+                data.putExtra(key_id, id);
+            }
+            setResult(RESULT_OK, data);
+            finish();
+
+        }
     }
 
 }
