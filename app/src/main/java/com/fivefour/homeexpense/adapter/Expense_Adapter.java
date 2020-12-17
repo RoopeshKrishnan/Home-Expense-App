@@ -38,7 +38,10 @@ public class Expense_Adapter extends RecyclerView.Adapter<Expense_Adapter.Expens
 
     @Override
     public int getItemCount() {
+
+
         return expenses.size();
+
     }
 
     // Update recycler view with each cahnges

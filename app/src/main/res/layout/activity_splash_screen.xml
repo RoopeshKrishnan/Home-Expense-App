@@ -4,11 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple_700"
-    android:orientation="vertical"
+
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".Splash_screen">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
+     android:background="@color/purple_700"
+      android:backgroundTintMode="add"
+    android:backgroundTint="@color/purple_700"
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
     <TextView
@@ -20,6 +24,7 @@
         android:textColor="#ffffff"
         android:textSize="50sp"
         android:textStyle="bold" />
+
     <ProgressBar
         android:id="@+id/splashProgress"
         style="?android:attr/progressBarStyleHorizontal"

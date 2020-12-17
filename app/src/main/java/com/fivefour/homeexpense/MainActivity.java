@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     RecyclerView recyclerView;
     Expense_VIewModel expense_vIewModel;
     Expense_Adapter expenseAdapter;
-    private ArrayList<Expense> expense;
+    private ArrayList<Expense> expenseArrayList;
 
 
     @Override
@@ -71,6 +71,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_nav_drawer_icon);*/
 
+
+
+/*int oo = expenseArrayList.size();
+Toast.makeText(this,oo+"",Toast.LENGTH_LONG).show();*/
+
+
+
+
+
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +90,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
+
+        //showEmptyView();
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.open, R.string.close);
@@ -131,7 +142,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                                 expense_vIewModel.delete(expenseAdapter.getExpenseAt(viewHolder.getAdapterPosition()));
                                 expenseAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
-                                showEmptyView();
 
                             }
                         })
@@ -358,8 +368,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    private void showEmptyView() {
-        int i=0;
-    }
+  /*  private void showEmptyView() {
+
+        int uyu = expense.size();*/
+
+       /* if (expense.size() < 0) {
+            this.recyclerView.setVisibility(View.GONE);
+            findViewById(R.id.openingImg).setVisibility(View.VISIBLE);
+
+        } else {
+            this.recyclerView.setVisibility(View.VISIBLE);
+            findViewById(R.id.openingImg).setVisibility(View.GONE);
+        }*/
+   /*  if(uyu > 0)
+     {
+         this.recyclerView.setVisibility(View.GONE);
+         findViewById(R.id.openingImg).setVisibility(View.VISIBLE);
+     }else {
+         this.recyclerView.setVisibility(View.VISIBLE);
+         findViewById(R.id.openingImg).setVisibility(View.GONE);
+     }*/
+  
+
 
 }

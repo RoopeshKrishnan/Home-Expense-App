@@ -26,12 +26,12 @@
     <string name="disel">ഡീസൽ</string>
     <string name="chips">ചിപ്സ്</string>
     <string name="shopping">ഷോപ്പിംഗ്</string>
-    <string name="mobile">മൊബൈൽ റീചാർജ്    </string>
-    <string name="wifi">കേബിൾ/വൈഫൈ  </string>
+    <string name="mobile"> റീചാർജ്    </string>
+    <string name="wifi">കേബിൾ/wifi  </string>
     <string name="medicine">മരുന്ന് </string>
     <string name="extra">എക്സ്ട്രാ </string>
 
-    <string name="total">Total :</string>
+    <string name="total">Total</string>
 
 
 </resources>

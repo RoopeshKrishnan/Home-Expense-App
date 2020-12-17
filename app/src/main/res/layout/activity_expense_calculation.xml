@@ -6,606 +6,604 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Expense_Edit_calculation_Activity">
-    <com.google.android.material.appbar.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.HomeExpense.AppBarOverlay">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Expense_Edit_calculation_Activity">
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.HomeExpense.PopupOverlay" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/purple_700"
-        android:text="Enter Amounts in The corresponding Field"
-        android:layout_marginTop="30dp"
-        android:textSize="20sp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="25dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/putdate"
-            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="2"
-            android:text="Pick month"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:layout_marginBottom="10sp"/>
+            android:theme="@style/Theme.HomeExpense.AppBarOverlay">
 
-        <TextView
-            android:id="@+id/getdate"
-            android:layout_width="0dp"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/Theme.HomeExpense.PopupOverlay" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="15sp"
-            android:textColor="@color/purple_700"
-             />
+            android:paddingTop="25dp"
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/putdate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="3"
+                android:text="Select a month"
+                android:textSize="20sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:layout_marginBottom="10sp"/>
+
+            <TextView
+                android:id="@+id/getdate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/et_bg_style"
+
+                android:layout_weight="2"
+                android:textSize="16dp"
+                android:textColor="@color/purple_700"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:text="@string/milk"
+                android:layout_marginBottom="10sp"/>
+
+            <EditText
+                android:id="@+id/exp_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="6"
+                android:gravity="center"
+                android:maxLength="10"
+                android:textSize="25sp"
+                android:background="@drawable/et_bg_style"
+                android:layout_weight="2"
+                android:inputType="number" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:text="@string/paper"
+                android:layout_marginBottom="10sp"/>
+
+            <EditText
+                android:id="@+id/exp_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:background="@drawable/et_bg_style"
+                android:layout_weight="2"
+                android:inputType="number" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:text="@string/current"
+                android:layout_marginBottom="10sp"/>
+
+            <EditText
+                android:id="@+id/exp_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:background="@drawable/et_bg_style"
+                android:layout_weight="2"
+                android:inputType="number" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:text="@string/gas"
+                android:layout_marginBottom="10sp"/>
+
+            <EditText
+                android:id="@+id/exp_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:background="@drawable/et_bg_style"
+                android:layout_weight="2"
+                android:inputType="number" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:text="@string/rise"
+                android:layout_marginBottom="10sp"/>
+
+            <EditText
+                android:id="@+id/exp_5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:background="@drawable/et_bg_style"
+                android:layout_weight="2"
+                android:inputType="number" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:text="@string/veg"
+                android:layout_marginBottom="10sp"/>
+
+            <EditText
+                android:id="@+id/exp_6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:background="@drawable/et_bg_style"
+                android:layout_weight="2"
+                android:inputType="number" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:text="@string/other"
+                android:layout_marginBottom="10sp"/>
+
+            <EditText
+                android:id="@+id/exp_7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:background="@drawable/et_bg_style"
+                android:layout_weight="2"
+                android:inputType="number" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:text="@string/fish"
+                android:layout_marginBottom="10sp"/>
+
+            <EditText
+                android:id="@+id/exp_8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:background="@drawable/et_bg_style"
+                android:layout_weight="2"
+                android:inputType="number" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:text="@string/meat"
+                android:layout_marginBottom="10sp"/>
+
+            <EditText
+                android:id="@+id/exp_9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:background="@drawable/et_bg_style"
+                android:layout_weight="2"
+                android:inputType="number" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:text="@string/water"
+                android:layout_marginBottom="10sp"/>
+
+            <EditText
+                android:id="@+id/exp_10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:background="@drawable/et_bg_style"
+                android:layout_weight="2"
+                android:inputType="number" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:text="@string/disel"
+                android:layout_marginBottom="10sp"/>
+
+            <EditText
+                android:id="@+id/exp_11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:background="@drawable/et_bg_style"
+                android:layout_weight="2"
+                android:inputType="number" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:text="@string/chips"
+                android:layout_marginBottom="10sp"/>
+
+            <EditText
+                android:id="@+id/exp_12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:background="@drawable/et_bg_style"
+                android:layout_weight="2"
+                android:inputType="number" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:text="@string/shopping"
+                android:layout_marginBottom="10sp"/>
+
+            <EditText
+                android:id="@+id/exp_13"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:background="@drawable/et_bg_style"
+                android:layout_weight="2"
+                android:inputType="number" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:text="@string/mobile"
+                android:layout_marginBottom="10sp"/>
+
+            <EditText
+                android:id="@+id/exp_14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:background="@drawable/et_bg_style"
+                android:layout_weight="2"
+                android:inputType="number" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:text="@string/wifi"
+                android:layout_marginBottom="10sp"/>
+
+            <EditText
+                android:id="@+id/exp_15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:background="@drawable/et_bg_style"
+                android:layout_weight="2"
+                android:inputType="number" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:text="@string/medicine"
+                android:layout_marginBottom="10sp"/>
+
+            <EditText
+                android:id="@+id/exp_16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:background="@drawable/et_bg_style"
+                android:layout_weight="2"
+                android:inputType="number" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                android:background="@drawable/tv_bg_style"
+                android:text="@string/extra"
+                android:layout_marginBottom="10sp"/>
+
+            <EditText
+                android:id="@+id/exp_17"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:background="@drawable/et_bg_style"
+                android:layout_weight="2"
+                android:inputType="number" />
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/exp_calculate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="@string/total"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/purple_700"
+                android:layout_marginEnd="12dp"
+
+                android:gravity="center"
+                android:background="@drawable/tv_bg_style"
+                android:textSize="25sp"/>
+
+            <TextView
+                android:id="@+id/exp_total"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textColor="@color/purple_700"
+                android:background="@drawable/et_bg_style"
+                android:gravity="start"
+                android:textSize="25sp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cancel_button1_ae"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:gravity="center"
+                android:layout_marginLeft="40dp"
+                android:textStyle="bold"
+                android:textColor="@color/purple_700"
+                android:background="@drawable/bt_bg_cancel"
+                android:layout_marginRight="5dp"
+                android:text="Cancel"
+                android:textSize="20sp"/>
+            <Button
+                android:id="@+id/bt_ok"
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/bt_bg_cancel"
+                android:layout_marginRight="40dp"
+                android:textColor="@color/purple_700"
+                android:text="Ok"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:text="@string/milk"
-            android:layout_marginBottom="10sp"/>
-
-        <EditText
-            android:id="@+id/exp_1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="6"
-            android:textSize="25sp"
-            android:background="@drawable/et_bg_style"
-            android:layout_weight="1"
-            android:inputType="number" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:text="@string/paper"
-            android:layout_marginBottom="10sp"/>
-
-        <EditText
-            android:id="@+id/exp_2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="25sp"
-            android:background="@drawable/et_bg_style"
-            android:layout_weight="1"
-            android:inputType="number" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:text="@string/current"
-            android:layout_marginBottom="10sp"/>
-
-        <EditText
-            android:id="@+id/exp_3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="25sp"
-            android:background="@drawable/et_bg_style"
-            android:layout_weight="1"
-            android:inputType="number" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:text="@string/gas"
-            android:layout_marginBottom="10sp"/>
-
-        <EditText
-            android:id="@+id/exp_4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="25sp"
-            android:background="@drawable/et_bg_style"
-            android:layout_weight="1"
-            android:inputType="number" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:text="@string/rise"
-            android:layout_marginBottom="10sp"/>
-
-        <EditText
-            android:id="@+id/exp_5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="25sp"
-            android:background="@drawable/et_bg_style"
-            android:layout_weight="1"
-            android:inputType="number" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:text="@string/veg"
-            android:layout_marginBottom="10sp"/>
-
-        <EditText
-            android:id="@+id/exp_6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="25sp"
-            android:background="@drawable/et_bg_style"
-            android:layout_weight="1"
-            android:inputType="number" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:text="@string/other"
-            android:layout_marginBottom="10sp"/>
-
-        <EditText
-            android:id="@+id/exp_7"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="25sp"
-            android:background="@drawable/et_bg_style"
-            android:layout_weight="1"
-            android:inputType="number" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:text="@string/fish"
-            android:layout_marginBottom="10sp"/>
-
-        <EditText
-            android:id="@+id/exp_8"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="25sp"
-            android:background="@drawable/et_bg_style"
-            android:layout_weight="1"
-            android:inputType="number" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:text="@string/meat"
-            android:layout_marginBottom="10sp"/>
-
-        <EditText
-            android:id="@+id/exp_9"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="25sp"
-            android:background="@drawable/et_bg_style"
-            android:layout_weight="1"
-            android:inputType="number" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:text="@string/water"
-            android:layout_marginBottom="10sp"/>
-
-        <EditText
-            android:id="@+id/exp_10"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="25sp"
-            android:background="@drawable/et_bg_style"
-            android:layout_weight="1"
-            android:inputType="number" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:text="@string/disel"
-            android:layout_marginBottom="10sp"/>
-
-        <EditText
-            android:id="@+id/exp_11"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="25sp"
-            android:background="@drawable/et_bg_style"
-            android:layout_weight="1"
-            android:inputType="number" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:text="@string/chips"
-            android:layout_marginBottom="10sp"/>
-
-        <EditText
-            android:id="@+id/exp_12"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="25sp"
-            android:background="@drawable/et_bg_style"
-            android:layout_weight="1"
-            android:inputType="number" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:text="@string/shopping"
-            android:layout_marginBottom="10sp"/>
-
-        <EditText
-            android:id="@+id/exp_13"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="25sp"
-            android:background="@drawable/et_bg_style"
-            android:layout_weight="1"
-            android:inputType="number" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:text="@string/mobile"
-            android:layout_marginBottom="10sp"/>
-
-        <EditText
-            android:id="@+id/exp_14"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="25sp"
-            android:background="@drawable/et_bg_style"
-            android:layout_weight="1"
-            android:inputType="number" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:text="@string/wifi"
-            android:layout_marginBottom="10sp"/>
-
-        <EditText
-            android:id="@+id/exp_15"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="25sp"
-            android:background="@drawable/et_bg_style"
-            android:layout_weight="1"
-            android:inputType="number" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:text="@string/medicine"
-            android:layout_marginBottom="10sp"/>
-
-        <EditText
-            android:id="@+id/exp_16"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="25sp"
-            android:background="@drawable/et_bg_style"
-            android:layout_weight="1"
-            android:inputType="number" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/purple_700"
-            android:textColor="@color/white"
-            android:background="@drawable/tv_bg_style"
-            android:text="@string/extra"
-            android:layout_marginBottom="10sp"/>
-
-        <EditText
-            android:id="@+id/exp_17"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="25sp"
-            android:background="@drawable/et_bg_style"
-            android:layout_weight="1"
-            android:inputType="number" />
-
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/exp_calculate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/total"
-            android:textColor="@color/purple_700"
-            android:gravity="end"
-            android:backgroundTint="@color/white"
-            android:background="@color/white"
-            android:textSize="25sp"/>
-        <TextView
-            android:id="@+id/exp_total"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/purple_700"
-            android:backgroundTint="@color/white"
-            android:background="@color/white"
-            android:gravity="start"
-            android:textSize="25sp"/>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
-        android:orientation="horizontal">
-
-      <Button
-          android:id="@+id/cancel_button1_ae"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_weight="4"
-          android:gravity="center"
-          android:layout_marginLeft="40dp"
-          android:textColor="@color/purple_700"
-          android:background="@drawable/bt_bg_cancel"
-          android:drawableTint="@color/teal_200"
-          android:layout_marginRight="5dp"
-          android:text="Cancel"
-          android:drawablePadding="-60dp"
-          android:textSize="20sp"/>
-        <Button
-            android:id="@+id/bt_ok"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:drawableTint="@color/teal_200"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/bt_bg_ok"
-            android:layout_marginRight="40dp"
-            android:textColor="@color/white"
-            android:text="Ok"
-            android:textSize="20sp"/>
-
-    </LinearLayout>
-</LinearLayout>
 
 </ScrollView>

@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -82,22 +83,88 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
         display_tot = (TextView) findViewById(R.id.exp_total);
 
         hp_1 = (EditText) findViewById(R.id.exp_1);
+        int maxLength=8;
+        hp_1.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength)});
+
+
         hp_2 = (EditText) findViewById(R.id.exp_2);
+        int maxLength2=8;
+        hp_2.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength2)});
+
+
         hp_3 = (EditText) findViewById(R.id.exp_3);
+        int maxLength3=8;
+        hp_3.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength3)});
+
+
         hp_4 = (EditText) findViewById(R.id.exp_4);
+        int maxLength4=8;
+        hp_4.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength4)});
+
+
         hp_5 = (EditText) findViewById(R.id.exp_5);
+        int maxLength5=8;
+        hp_5.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength5)});
+
+
         hp_6 = (EditText) findViewById(R.id.exp_6);
+        int maxLength6=8;
+        hp_6.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength6)});
+
+
         hp_7 = (EditText) findViewById(R.id.exp_7);
+        int maxLength7=8;
+        hp_7.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength7)});
+
+
         hp_8 = (EditText) findViewById(R.id.exp_8);
+        int maxLength8=8;
+        hp_8.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength8)});
+
+
         hp_9 = (EditText) findViewById(R.id.exp_9);
+        int maxLength9=8;
+        hp_9.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength9)});
+
+
         hp_10 = (EditText) findViewById(R.id.exp_10);
+        int maxLength10=8;
+        hp_10.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength10)});
+
+
         hp_11 = (EditText) findViewById(R.id.exp_11);
+        int maxLength11=8;
+        hp_11.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength11)});
+
+
         hp_12 = (EditText) findViewById(R.id.exp_12);
+        int maxLength12=8;
+        hp_12.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength12)});
+
+
         hp_13 = (EditText) findViewById(R.id.exp_13);
+        int maxLength13=8;
+        hp_13.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength13)});
+
+
         hp_14 = (EditText) findViewById(R.id.exp_14);
+        int maxLength14=8;
+        hp_14.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength14)});
+
+
         hp_15 = (EditText) findViewById(R.id.exp_15);
+        int maxLength15=8;
+        hp_15.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength15)});
+
+
         hp_16 = (EditText) findViewById(R.id.exp_16);
+        int maxLength16=8;
+        hp_16.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength16)});
+
+
         hp_17 = (EditText) findViewById(R.id.exp_17);
+        int maxLength17=8;
+        hp_17.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength17)});
 
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.bt_cancel);
