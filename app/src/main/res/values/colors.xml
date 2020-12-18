@@ -14,6 +14,7 @@
 
 
    <color name="lighter_blue">#E7E7E9</color>
+    <color name="contactimgback">#4DA0DC</color>
 
     <color name="card_background">#F7F7F7</color>
 </resources>

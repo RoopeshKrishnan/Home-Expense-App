@@ -6,8 +6,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.*;
 
@@ -31,6 +33,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Expense_VIewModel expense_vIewModel;
     Expense_Adapter expenseAdapter;
     private ArrayList<Expense> expenseArrayList;
+    Dialog dialog;
 
 
     @Override
@@ -352,15 +356,16 @@ Toast.makeText(this,oo+"",Toast.LENGTH_LONG).show();*/
                 drawer.closeDrawer(GravityCompat.START);
             }
         } else if (id == R.id.nav_about) {
-            Intent intent = new Intent(this, AboutActivity.class);
-            startActivity(intent);
+            show_about_dialog();
+
             return false;
         } else if (id == R.id.nav_contact) {
-            Intent intent = new Intent(this, ContactActivity.class);
-            startActivity(intent);
+
+            show_contact_dialog();
             return false;
+
         } else if (id == R.id.nav_version) {
-            Intent intent = new Intent(this, VersionActivity.class);
+            Intent intent = new Intent(MainActivity.this,VersionActivity.class);
             startActivity(intent);
             return false;
         }
@@ -369,6 +374,24 @@ Toast.makeText(this,oo+"",Toast.LENGTH_LONG).show();*/
         return true;
     }
 
+
+
+
+    public void show_contact_dialog(){
+        dialog = new Dialog(MainActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_contact);
+        dialog.show();
+    }
+
+
+    public void show_about_dialog(){
+        dialog = new Dialog(MainActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_about);
+        dialog.show();
+
+    }
 
   /*  private void showEmptyView() {
 

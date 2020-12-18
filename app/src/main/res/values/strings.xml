@@ -11,6 +11,16 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="email"><a href="https://www.google.com/">google account</a></string>
+    <string name="insta"><a href="https://www.instagram.com/">Profile</a></string>
+
+    <string name="about_app">Simple Home expense Calculating app.
+first you need to select a month and add your expense in the corresponding field, it will automatically calculate , and when you save it ,
+        the data will be stored in your phone, so you can refer it any time.</string>
+    <string name="about_app_secondpara">Lot of additionl features will be add in the feature update...</string>
+
+
+
 
     <!-- expense activity malayalam text-->
     <string name="milk">പാൽ </string>

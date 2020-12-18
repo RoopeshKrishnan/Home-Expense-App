@@ -16,13 +16,8 @@
         <activity
             android:name=".VersionActivity"
             android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".ContactActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".AboutActivity"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.HomeExpense" />
+
+
         <activity
             android:name=".Splash_screen"
             android:theme="@style/SplashScreenTheme">

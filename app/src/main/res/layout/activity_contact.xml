@@ -1,26 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ContactActivity">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
+    android:layout_width="300dp"
+    android:layout_height="270dp"
+    android:layout_gravity="center"
+    android:background="@color/contactimgback"
+   >
+
+    <ImageView
+        android:id="@+id/contactimg"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
-        app:titleTextColor="@color/purple_700"
-        app:theme="@style/ToolbarTheme"
-        app:popupTheme="@style/Theme.HomeExpense.PopupOverlay" />
+        android:layout_height="100sp"
+        android:layout_marginBottom="10sp"
+        android:background="@color/contactimgback"
+        android:src="@drawable/ic_developer" />
+
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="This is Contact Activity page"
-        android:textSize="42sp"/>
+        android:layout_below="@+id/contactimg"
+        android:layout_marginLeft="30dp"
+        android:background="@color/contactimgback"
+        android:text="Contacts Me through below options "
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
-</LinearLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_below="@+id/textView"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10sp"
+        android:paddingTop="15dp"
+        app:cardBackgroundColor="@color/cardview_light_background"
+        app:cardCornerRadius="20sp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:textColor="@color/contactimgback"
+                    android:text="email" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textColor="@color/contactimgback"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="phone" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:textColor="@color/contactimgback"
+                    android:layout_height="wrap_content"
+                    android:text="+91123456789" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:textColor="@color/contactimgback"
+                    android:text="Instagram" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="@string/insta" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
