@@ -96,6 +96,8 @@ Toast.makeText(this,oo+"",Toast.LENGTH_LONG).show();*/
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.open, R.string.close);
         drawer.addDrawerListener(toggle);
+        // navigation drawer hamburger icon color
+        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.purple_700));
         toggle.syncState();
 
 

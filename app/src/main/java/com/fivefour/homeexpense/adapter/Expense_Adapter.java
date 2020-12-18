@@ -1,11 +1,15 @@
 package com.fivefour.homeexpense.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fivefour.homeexpense.R;
@@ -18,6 +22,7 @@ public class Expense_Adapter extends RecyclerView.Adapter<Expense_Adapter.Expens
 
     private List<Expense> expenses = new ArrayList<>();
     private OnItemClickListener listener;
+    Context context;
 
     @NonNull
     @Override
@@ -33,6 +38,8 @@ public class Expense_Adapter extends RecyclerView.Adapter<Expense_Adapter.Expens
         Expense currentExpense = expenses.get(position);
         holder.yearHolder.setText(currentExpense.getYearmonth());
         holder.totalHolder.setText(String.valueOf(currentExpense.getExp_total()));
+
+        //holder.container.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_transition_animation));
 
     }
 
@@ -59,13 +66,13 @@ public class Expense_Adapter extends RecyclerView.Adapter<Expense_Adapter.Expens
 
     // ViewHolder
     class ExpenseHolder extends RecyclerView.ViewHolder {
-
+       // CardView container;
         private TextView yearHolder;
         private TextView totalHolder;
 
         public ExpenseHolder(View itemView) {
             super(itemView);
-
+           // container = itemView.findViewById(R.id.card_container);
             yearHolder = itemView.findViewById(R.id.holder_year);
             totalHolder = itemView.findViewById(R.id.holder_total);
 

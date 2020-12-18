@@ -10,7 +10,8 @@
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="@color/white"
+        app:titleTextColor="@color/purple_700"
         app:theme="@style/ToolbarTheme"
         app:popupTheme="@style/Theme.HomeExpense.PopupOverlay" />
 

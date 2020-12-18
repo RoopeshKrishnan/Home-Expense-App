@@ -11,6 +11,9 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+
+        <item name="fontFamily">@font/varela_round</item>
         <!-- Customize your theme here. -->
 
     </style>
@@ -41,7 +44,7 @@
     <!-- toolbar backbutton style-->
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
         <!-- Customize color of navigation drawer icon and back arrow -->
-        <item name="colorControlNormal">@color/toolbar_color_control_normal</item>
+        <item name="colorControlNormal">@color/purple_700</item>
         //toolbar title color
         <item name="android:textColorPrimary">@android:color/white</item>
     </style>

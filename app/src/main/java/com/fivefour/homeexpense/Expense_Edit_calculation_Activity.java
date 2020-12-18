@@ -1,11 +1,13 @@
 package com.fivefour.homeexpense;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
@@ -23,10 +25,12 @@ import android.widget.Toast;
 import com.fivefour.homeexpense.db.Expense;
 import com.fivefour.homeexpense.db.Expense_Dao;
 import com.fivefour.homeexpense.model.Expense_VIewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import static android.graphics.PorterDuff.*;
 import static android.text.TextUtils.*;
 import static android.util.Log.*;
 import static android.view.WindowManager.*;
@@ -59,10 +63,11 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
     private Expense_VIewModel expense_vIewModel;
     public TextView putdate, getdate, cal, sum, display_tot;
     public EditText hp_onne, hp_1, hp_2, hp_3, hp_4, hp_5, hp_6, hp_7, hp_8, hp_9, hp_10, hp_11, hp_12, hp_13, hp_14, hp_15, hp_16, hp_17;
-    Button okbutton, cancel_button;
     Toolbar toolbar;
     RecyclerView recyclerView;
+    FloatingActionButton fab_expnese_action;
     public DatePickerDialog.OnDateSetListener mDateSetListner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +81,8 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
 
 
         putdate = (TextView) findViewById(R.id.putdate);
@@ -168,6 +175,7 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
 
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.bt_cancel);
+        toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.purple_700), PorterDuff.Mode.SRC_ATOP);
 
 
         Intent intent = getIntent();
@@ -257,24 +265,32 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
             setTitle("Enter Your Data");
         }
 
-        cancel_button =(Button)findViewById(R.id.cancel_button1_ae);
+      /*  cancel_button =(Button)findViewById(R.id.cancel_button1_ae);
         cancel_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent cancelIntent = new Intent(Expense_Edit_calculation_Activity.this, MainActivity.class);
                 startActivity(cancelIntent);
             }
+        });*/
+        fab_expnese_action = (FloatingActionButton) findViewById(R.id.fab_ok);
+        fab_expnese_action.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Okbutton_Click_actions();
+
+            }
         });
 
 
-        okbutton = (Button) findViewById(R.id.bt_ok);
+       /* okbutton = (Button) findViewById(R.id.bt_ok);
         okbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Okbutton_Click_actions();
             }
-        });
+        });*/
 
 
         putdate.setOnClickListener(new View.OnClickListener() {
