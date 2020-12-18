@@ -3,20 +3,33 @@ package com.fivefour.homeexpense;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class VersionActivity extends AppCompatActivity {
+   // Dialog dialog;
+    Button version_ok;
 
-   Toolbar toolbar3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_version);
-        toolbar3 = (Toolbar) findViewById(R.id.toolbar3);
-        setSupportActionBar(toolbar3);
-        getSupportActionBar().setTitle("Version");
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+       /* dialog= new Dialog(this);
+        dialog.setContentView(R.layout.activity_version);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.R.color.transparent));*/
+        version_ok =(Button)findViewById(R.id.versionok);
+        version_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(VersionActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
