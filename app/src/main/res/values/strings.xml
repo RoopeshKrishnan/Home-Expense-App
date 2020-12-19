@@ -19,6 +19,8 @@ first you need to select a month and add your expense in the corresponding field
         the data will be stored in your phone, so you can refer it any time.</string>
     <string name="about_app_secondpara">Lot of additionl features will be add in the feature update...</string>
 
+    <string name="switcher">Change Theme</string>
+
 
 
 
@@ -42,6 +44,7 @@ first you need to select a month and add your expense in the corresponding field
     <string name="extra">എക്സ്ട്രാ </string>
 
     <string name="total">Total</string>
+    <string name="action_settings">Settings</string>
 
 
 </resources>

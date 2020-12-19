@@ -21,7 +21,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.widget.Toolbar;
@@ -31,9 +33,12 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -41,7 +46,9 @@ import java.util.List;
 
 import static android.content.DialogInterface.*;
 import static androidx.appcompat.app.AlertDialog.*;
+import static androidx.core.view.MenuItemCompat.*;
 import static androidx.recyclerview.widget.ItemTouchHelper.*;
+import static com.google.android.material.snackbar.Snackbar.*;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -62,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Expense_Adapter expenseAdapter;
     private ArrayList<Expense> expenseArrayList;
     Dialog dialog;
+    SwitchCompat switchCompat;
 
 
     @Override
@@ -212,7 +220,14 @@ Toast.makeText(this,oo+"",Toast.LENGTH_LONG).show();*/
         });
 
 
+
+
+
     }
+
+
+
+
 
 
     @Override
@@ -368,6 +383,9 @@ Toast.makeText(this,oo+"",Toast.LENGTH_LONG).show();*/
             Intent intent = new Intent(MainActivity.this,VersionActivity.class);
             startActivity(intent);
             return false;
+        }else if (id == R.id.nav_settings) {
+           show_settings_dialog();
+            return false;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -393,6 +411,26 @@ Toast.makeText(this,oo+"",Toast.LENGTH_LONG).show();*/
 
     }
 
+    public void show_settings_dialog(){
+
+        dialog = new Dialog(MainActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.settings_layout);
+
+        ImageButton imagebuttonn = dialog.findViewById(R.id.imagebutton);
+        imagebuttonn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+
+
+
+    }
   /*  private void showEmptyView() {
 
         int uyu = expense.size();*/

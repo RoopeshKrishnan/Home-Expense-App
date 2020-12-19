@@ -26,8 +26,8 @@ public class VersionActivity extends AppCompatActivity {
         version_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(VersionActivity.this,MainActivity.class);
-                startActivity(intent);
+
+                finish();
             }
         });
 
