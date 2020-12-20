@@ -34,5 +34,24 @@
     <color name="version_copyright_text_color">#FFFFFFFF</color>
     <color name="version_layout_background">#444245</color>
 
+    <color name="recy_card_back">#444245</color>
+
+    <color name="recy_card_total_textcolor">#FFFFFFFF</color>
+
+    <color name="toolbar_background">#0A0117</color>
+    <color name="toolbar_text_color">#FFFFFFFF</color>
+
+    <color name="expense_calculation_background">#0A0117</color>
+    <color name="splashScrenn_background">#FF3700B3</color>
+
+    <color name="fab_background">#EE85FD</color>
+
+    <color name="expense_cal_textview_background">#EE85FD</color>
+
+    <color name="expense_cal_textview_color">#FFFFFFFF</color>
+
+    <color name="bt_bg_cancel_color">#EE85FD</color>
+
+
 
 </resources>

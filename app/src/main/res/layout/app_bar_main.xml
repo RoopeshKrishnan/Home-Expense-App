@@ -16,9 +16,9 @@
             app:titleMarginStart="60dp"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
+            android:background="@color/toolbar_background"
             app:popupTheme="@style/Theme.HomeExpense.PopupOverlay"
-            app:titleTextColor="@color/purple_700"/>
+            app:titleTextColor="@color/toolbar_text_color"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -31,7 +31,7 @@
         android:layout_gravity="bottom|end"
         android:focusable="true"
         android:layout_margin="@dimen/fab_margin"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/fab_background"
         app:srcCompat="@drawable/ic_fabicon" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

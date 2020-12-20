@@ -14,22 +14,10 @@
     <color name="background">#ffffff</color>
 
 
-
-   <color name="lighter_blue">#E7E7E9</color>
+    <color name="lighter_blue">#E7E7E9</color>
     <color name="contactimgback">#4DA0DC</color>
 
     <color name="card_background">#F7F7F7</color>
-
-
-
-
-
-
-
-
-
-
-
 
 
     // new defining
@@ -37,16 +25,28 @@
     <color name="settings_darkmode_button_bg_color">#FFFFFFFF</color>
 
     <color name="version_copyright_text_color">#444245</color>
-<color name="version_layout_background">#FFFFFFFF</color>
+
+    <color name="version_layout_background">#FFFFFFFF</color>
+
+    <color name="recy_card_back">#FFFFFFFF</color>
+
+    <color name="recy_card_total_textcolor">#FF3700B3</color>
+
+    <color name="toolbar_background">#FFFFFFFF</color>
+    <color name="toolbar_text_color">#FF3700B3</color>
 
 
+    <color name="expense_calculation_background">#FFFFFFFF</color>
 
+    <color name="splashScrenn_background">#FF3700B3</color>
 
+    <color name="fab_background">#FF6200EE</color>
 
+    <color name="expense_cal_textview_background">#FF3700B3</color>
 
+    <color name="expense_cal_textview_color">#FF000000</color>
 
-
-
+    <color name="bt_bg_cancel_color">#FF3700B3</color>
 
 
 
