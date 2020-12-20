@@ -7,8 +7,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.app.TaskStackBuilder;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.*;
@@ -21,6 +24,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
+
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.MenuItemCompat;
@@ -38,7 +43,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -46,6 +53,7 @@ import java.util.List;
 
 import static android.content.DialogInterface.*;
 import static androidx.appcompat.app.AlertDialog.*;
+import static androidx.appcompat.app.AppCompatDelegate.*;
 import static androidx.core.view.MenuItemCompat.*;
 import static androidx.recyclerview.widget.ItemTouchHelper.*;
 import static com.google.android.material.snackbar.Snackbar.*;
@@ -69,33 +77,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Expense_Adapter expenseAdapter;
     private ArrayList<Expense> expenseArrayList;
     Dialog dialog;
-    SwitchCompat switchCompat;
+
+    Boolean isNightModeOn;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor sharedPrefsEdit;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        sharedPreferences = getSharedPreferences("shareprefrence",0);
+        sharedPrefsEdit = sharedPreferences.edit();
+        isNightModeOn = sharedPreferences.getBoolean("NightMode",false);
+        if (isNightModeOn){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        }
+
+     
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-       /* getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_nav_drawer_icon);*/
-
-
-
-/*int oo = expenseArrayList.size();
-Toast.makeText(this,oo+"",Toast.LENGTH_LONG).show();*/
-
-
-
-
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(MainActivity.this, Expense_Edit_calculation_Activity.class);
                 startActivityForResult(intent, ADD_EXPENSE_REQUEST);
 
@@ -103,7 +117,6 @@ Toast.makeText(this,oo+"",Toast.LENGTH_LONG).show();*/
             }
         });
 
-        //showEmptyView();
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.open, R.string.close);
@@ -134,8 +147,6 @@ Toast.makeText(this,oo+"",Toast.LENGTH_LONG).show();*/
                 //Toast.makeText(MainActivity.this, "onChanged", Toast.LENGTH_SHORT).show();
             }
         });
-
-
 
 
         new ItemTouchHelper(new SimpleCallback(0,
@@ -172,19 +183,11 @@ Toast.makeText(this,oo+"",Toast.LENGTH_LONG).show();*/
 
             }
 
-                //expense_vIewModel.delete(expenseAdapter.getExpenseAt(viewHolder.getAdapterPosition()));
-              // Toast.makeText(MainActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
-
+            //expense_vIewModel.delete(expenseAdapter.getExpenseAt(viewHolder.getAdapterPosition()));
+            // Toast.makeText(MainActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
 
 
         }).attachToRecyclerView(recyclerView);
-
-
-
-
-
-
-
 
 
         // recycler view item click listner implementing
@@ -220,14 +223,10 @@ Toast.makeText(this,oo+"",Toast.LENGTH_LONG).show();*/
         });
 
 
-
-
-
     }
 
 
-
-
+    // end of on create
 
 
     @Override
@@ -380,11 +379,11 @@ Toast.makeText(this,oo+"",Toast.LENGTH_LONG).show();*/
             return false;
 
         } else if (id == R.id.nav_version) {
-            Intent intent = new Intent(MainActivity.this,VersionActivity.class);
+            Intent intent = new Intent(MainActivity.this, VersionActivity.class);
             startActivity(intent);
             return false;
-        }else if (id == R.id.nav_settings) {
-           show_settings_dialog();
+        } else if (id == R.id.nav_settings) {
+            show_settings_dialog();
             return false;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -393,9 +392,7 @@ Toast.makeText(this,oo+"",Toast.LENGTH_LONG).show();*/
     }
 
 
-
-
-    public void show_contact_dialog(){
+    public void show_contact_dialog() {
         dialog = new Dialog(MainActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.activity_contact);
@@ -403,7 +400,7 @@ Toast.makeText(this,oo+"",Toast.LENGTH_LONG).show();*/
     }
 
 
-    public void show_about_dialog(){
+    public void show_about_dialog() {
         dialog = new Dialog(MainActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.activity_about);
@@ -411,23 +408,48 @@ Toast.makeText(this,oo+"",Toast.LENGTH_LONG).show();*/
 
     }
 
-    public void show_settings_dialog(){
+    public void show_settings_dialog() {
 
         dialog = new Dialog(MainActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.settings_layout);
 
         ImageButton imagebuttonn = dialog.findViewById(R.id.imagebutton);
+        Button themechanger = dialog.findViewById(R.id.buttton);
+        themechanger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if (isNightModeOn){
+
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    sharedPrefsEdit.putBoolean("NightMode",false);
+                    sharedPrefsEdit.apply();
+                } else {
+                    sharedPrefsEdit.putBoolean("NightMode",true);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    sharedPrefsEdit.apply();
+
+                }
+
+
+            }
+        });
+
+
+
         imagebuttonn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+               //
                 dialog.dismiss();
             }
         });
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(false);
         dialog.show();
-
 
 
     }
@@ -451,7 +473,6 @@ Toast.makeText(this,oo+"",Toast.LENGTH_LONG).show();*/
          this.recyclerView.setVisibility(View.VISIBLE);
          findViewById(R.id.openingImg).setVisibility(View.GONE);
      }*/
-  
 
 
 }

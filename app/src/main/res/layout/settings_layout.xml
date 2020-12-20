@@ -63,19 +63,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="Change Theme"
-                android:textColor="@color/purple_700" />
+                android:textSize="17sp"
+                android:text=" Dark Mode"
+                android:textColor="@color/settings_darkmode_text_color" />
 
-            <androidx.appcompat.widget.SwitchCompat
-                app:theme="@style/BrandedSwitch.control"
-                app:showText="true"
+
+            <Button
+                android:id="@+id/buttton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:textOff="OFF"
-                android:textOn="ON"/>
-
+                android:background="@color/settings_darkmode_button_bg_color"
+                android:text="@string/title"/>
         </LinearLayout>
+
 
     </androidx.cardview.widget.CardView>
 </LinearLayout>

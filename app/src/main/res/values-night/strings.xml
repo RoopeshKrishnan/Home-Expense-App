@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Home Expense</string>
     <string name="splash_text">വീട്ടു ചെലവ് </string>
+    <string name="title">ON</string>
 
-    <string name="title">OFF</string>
 
     <string name="open">open</string>
     <string name="close">close</string>
