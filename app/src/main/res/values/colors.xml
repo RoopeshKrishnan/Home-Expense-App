@@ -48,7 +48,15 @@
 
     <color name="bt_bg_cancel_color">#FF3700B3</color>
 
+    <color name="navigationDrawer">#FF3700B3</color>
 
+    <color name="delete_button_boarder">#fa4353</color>
+
+    <color name="delete_dialog_textcolor">#FF000000</color>
+
+    <color name="delete_dialog_background">#FFFFFFFF</color>
+
+    <color name="fill_button_border">#FF000000</color>
 
 
 

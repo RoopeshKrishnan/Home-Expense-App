@@ -19,6 +19,18 @@
 
     <color name="card_background">#F7F7F7</color>
 
+    <color name="delete_dialog_textcolor">#FFFFFFFF</color>
+
+    <color name="delete_dialog_background">#FF000000</color>
+
+    <color name="delete_button_boarder">#fa4353</color>
+    <color name="fill_button_border">#FFFFFFFF</color>
+
+
+
+    //staTEST
+    
+
 
 
 
@@ -51,6 +63,8 @@
     <color name="expense_cal_textview_color">#FFFFFFFF</color>
 
     <color name="bt_bg_cancel_color">#EE85FD</color>
+
+    <color name="navigationDrawer">#EE85FD</color>
 
 
 

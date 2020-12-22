@@ -18,12 +18,11 @@
         android:id="@+id/nav_view"
         android:layout_width="180sp"
         android:layout_height="match_parent"
-        android:background="@color/purple_700"
+        android:background="@color/navigationDrawer"
         android:layout_gravity="start"
         app:itemTextColor="@color/white"
         android:fitsSystemWindows="true"
         app:itemIconTint="@color/white"
-
         app:itemBackground="@drawable/menu_item_padding"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />

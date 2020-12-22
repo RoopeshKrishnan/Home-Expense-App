@@ -23,6 +23,9 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginTop="7sp"
+            android:layout_marginBottom="7sp"
+            android:layout_marginLeft="2sp"
             android:layout_weight="2"
             android:src="@mipmap/card_img_" />
 
@@ -50,7 +53,7 @@
             android:gravity="center"
             android:text="here is"
             android:textColor="@color/recy_card_total_textcolor"
-            android:textSize="32sp"
+            android:textSize="31sp"
             android:textStyle="bold" />
 
 

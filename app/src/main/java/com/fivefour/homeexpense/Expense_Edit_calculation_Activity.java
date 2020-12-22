@@ -15,12 +15,15 @@ import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Window;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.Dialog;
 
 import com.fivefour.homeexpense.db.Expense;
 import com.fivefour.homeexpense.db.Expense_Dao;
@@ -577,41 +580,80 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
         // Log.d("MYINT", "value is" + orginalstoree);*/
 
         if (getdate.length() == 0) {
-            getdate.setError("pick a date");
+            filleverything();
         } else if (hp_1.length() == 0) {
             hp_1.setError("If nothing add 0");
+            filleverything();
+
         }else if (hp_2.length() == 0) {
             hp_2.setError("If nothing add 0");
+
+            filleverything();
+
         }else if (hp_3.length() == 0) {
             hp_3.setError("If nothing add 0");
+
+            filleverything();
+
         }else if (hp_4.length() == 0) {
             hp_4.setError("If nothing add 0");
+
+
+            filleverything();
+
         }else if (hp_5.length() == 0) {
             hp_5.setError("If nothing add 0");
+            filleverything();
+
+
         }else if (hp_6.length() == 0) {
             hp_6.setError("If nothing add 0");
+            filleverything();
+
         }else if (hp_7.length() == 0) {
             hp_7.setError("If nothing add 0");
+            filleverything();
+
         }else if (hp_8.length() == 0) {
             hp_8.setError("If nothing add 0");
+            filleverything();
+
         }else if (hp_9.length() == 0) {
             hp_9.setError("If nothing add 0");
+            filleverything();
+
         }else if (hp_10.length() == 0) {
             hp_10.setError("If nothing add 0");
+            filleverything();
+
         }else if (hp_11.length() == 0) {
             hp_11.setError("If nothing add 0");
+            filleverything();
+
         }else if (hp_12.length() == 0) {
             hp_12.setError("If nothing add 0");
+            filleverything();
+
         }else if (hp_13.length() == 0) {
             hp_13.setError("If nothing add 0");
+            filleverything();
+
         }else if (hp_14.length() == 0) {
             hp_14.setError("If nothing add 0");
+            filleverything();
+
         }else if (hp_15.length() == 0) {
             hp_15.setError("If nothing add 0");
+            filleverything();
+
         }else if (hp_16.length() == 0) {
             hp_16.setError("If nothing add 0");
+            filleverything();
+
         }else if (hp_17.length() == 0) {
             hp_17.setError("If nothing add 0");
+            filleverything();
+
         }
 
         else {
@@ -667,6 +709,22 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
             finish();
 
         }
+    }
+
+    public void filleverything(){
+
+        Dialog dialog;
+        dialog = new Dialog(Expense_Edit_calculation_Activity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.fill_everything_dialogbox_layout);
+        Button fillbt = dialog.findViewById(R.id.fill_ok_bt);
+        fillbt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 
 }

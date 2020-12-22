@@ -41,7 +41,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
@@ -137,6 +140,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Expense_Adapter expenseAdapter = new Expense_Adapter();
         recyclerView.setAdapter(expenseAdapter);
 
+        // animation rerun  when dataset changed
+
+
 
         expense_vIewModel = ViewModelProviders.of(this).get(Expense_VIewModel.class);
         expense_vIewModel.getAllExpense().observe(this, new Observer<List<Expense>>() {
@@ -159,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
-                new AlertDialog.Builder(MainActivity.this)
+               /* new AlertDialog.Builder(MainActivity.this)
                         .setMessage("Delete Note?")
                         .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                             @Override
@@ -179,7 +185,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             }
                         })
                         .setCancelable(false)
-                        .create().show();
+                        .create().show();*/
+                dialog = new Dialog(MainActivity.this);
+                dialog.setContentView(R.layout.delete_confirm_layout);
+
+               // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+               //     dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.delete_button));
+
+             //   }
+             //   dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.setCancelable(false);
+                dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+
+                Button delete_ok_btn = dialog.findViewById(R.id.delete_ok_bt);
+                Button delete_cancel_btn = dialog.findViewById(R.id.delete_cancel_bt);
+
+                delete_ok_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        expense_vIewModel.delete(expenseAdapter.getExpenseAt(viewHolder.getAdapterPosition()));
+                        expenseAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+                        dialog.dismiss();
+                        Toast.makeText(MainActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                delete_cancel_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        recyclerView.getAdapter().notifyItemChanged(viewHolder.getAdapterPosition());
+                        dialog.dismiss();
+                    }
+                });
+                dialog.setCanceledOnTouchOutside(false);
+                dialog.show();
 
             }
 
@@ -221,6 +262,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivityForResult(intent, UPDATE_EXPENSE_REQUEST);
             }
         });
+
+
+        // animation for recyclerview
 
 
     }
@@ -474,5 +518,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
          findViewById(R.id.openingImg).setVisibility(View.GONE);
      }*/
 
+
+
+   private void  layoutAnimation(RecyclerView recyclerView){
+
+        Context context = recyclerView.getContext();
+        LayoutAnimationController layoutAnimationController = AnimationUtils.loadLayoutAnimation(context,R.anim.down_to_up);
+        recyclerView.setLayoutAnimation(layoutAnimationController);
+        recyclerView.getAdapter().notifyDataSetChanged();
+        recyclerView.scheduleLayoutAnimation();
+
+
+       final LayoutAnimationController controller =
+               AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_down_to_up);
+
+       recyclerView.setLayoutAnimation(controller);
+       recyclerView.getAdapter().notifyDataSetChanged();
+       recyclerView.scheduleLayoutAnimation();
+    }
 
 }
