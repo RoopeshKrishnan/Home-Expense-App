@@ -14,6 +14,7 @@
         <item name="android:textColorSecondary">@color/purple_700</item>
        <item name="android:windowAnimationStyle">@style/animation</item>
 
+        <item name="colorControlActivated">@color/switchcolor</item>
 
 
         <item name="fontFamily">@font/varela_round</item>

@@ -19,6 +19,7 @@ import android.os.*;
 
 import com.fivefour.homeexpense.adapter.Expense_Adapter;
 import com.fivefour.homeexpense.db.Expense;
+import com.fivefour.homeexpense.db.Expense_Dao;
 import com.fivefour.homeexpense.model.Expense_VIewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -80,11 +81,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Expense_Adapter expenseAdapter;
     private ArrayList<Expense> expenseArrayList;
     Dialog dialog;
+    Expense expense;
+    Expense_Dao expenseDao;
+    private List<Expense> expenses = new ArrayList<>();
 
     Boolean isNightModeOn;
-    SharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences, notification_preferences;
     SharedPreferences.Editor sharedPrefsEdit;
-
 
 
     @Override
@@ -94,17 +97,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sharedPreferences = getSharedPreferences("shareprefrence",0);
+        sharedPreferences = getSharedPreferences("shareprefrence", 0);
         sharedPrefsEdit = sharedPreferences.edit();
-        isNightModeOn = sharedPreferences.getBoolean("NightMode",false);
-        if (isNightModeOn){
+        isNightModeOn = sharedPreferences.getBoolean("NightMode", false);
+        if (isNightModeOn) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }else {
+        } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         }
 
-     
+
+
+        //notification
+       /* notification_preferences = getSharedPreferences("save",MODE_PRIVATE);
+        SwitchCompat switchCompat = findViewById(R.id.notfication_switch_bt);
+        switchCompat.setChecked(notification_preferences.getBoolean("value",true));*/
+
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -140,7 +150,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Expense_Adapter expenseAdapter = new Expense_Adapter();
         recyclerView.setAdapter(expenseAdapter);
 
-        // animation rerun  when dataset changed
+        // recyclerview item count
+        // int checkitemcount = expenseAdapter.getItemCount();
+        // Toast.makeText(MainActivity.this, checkitemcount+"  hurrrrrrrrrrrrrrrray", Toast.LENGTH_LONG).show();
+        // if (checkitemcount>0){
+        // this.recyclerView.setVisibility(View.GONE);
+        //    Toast.makeText(MainActivity.this, "hurrrrrrrrrrrrrrrray", Toast.LENGTH_LONG).show(); }
+
+        /* if (expenseAdapter.getItemCount() ==0 ){
+
+                Toast.makeText(MainActivity.this, "hurrrrrrrrrrrrrrrray", Toast.LENGTH_LONG).show();
+            }else{
+                Toast.makeText(MainActivity.this, "done", Toast.LENGTH_LONG).show();
+            }*/
+
+
+
+
+
+
+
 
 
 
@@ -148,6 +177,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         expense_vIewModel.getAllExpense().observe(this, new Observer<List<Expense>>() {
             @Override
             public void onChanged(List<Expense> expenses) {
+
+
                 //update recycler view
                 expenseAdapter.updateExpenseon(expenses);
                 //Toast.makeText(MainActivity.this, "onChanged", Toast.LENGTH_SHORT).show();
@@ -189,11 +220,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 dialog = new Dialog(MainActivity.this);
                 dialog.setContentView(R.layout.delete_confirm_layout);
 
-               // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-               //     dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.delete_button));
+                // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                //     dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.delete_button));
 
-             //   }
-             //   dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                //   }
+                //   dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialog.setCancelable(false);
                 dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
 
@@ -465,13 +496,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View view) {
 
 
-                if (isNightModeOn){
+                if (isNightModeOn) {
 
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    sharedPrefsEdit.putBoolean("NightMode",false);
+                    sharedPrefsEdit.putBoolean("NightMode", false);
                     sharedPrefsEdit.apply();
                 } else {
-                    sharedPrefsEdit.putBoolean("NightMode",true);
+                    sharedPrefsEdit.putBoolean("NightMode", true);
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                     sharedPrefsEdit.apply();
 
@@ -482,18 +513,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
 
+        SwitchCompat notification_switch;
+        notification_switch = dialog.findViewById(R.id.notfication_switch_bt);
+
+        notification_preferences = getSharedPreferences("save",MODE_PRIVATE);
+       // SwitchCompat switchCompat = findViewById(R.id.notfication_switch_bt);
+        notification_switch.setChecked(notification_preferences.getBoolean("value",true));
+        notification_switch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (notification_switch.isChecked()){
+
+                    SharedPreferences.Editor editor = getSharedPreferences("save",MODE_PRIVATE).edit();
+                    editor.putBoolean("value",true);
+                    editor.apply();
+                    notification_switch.setChecked(true);
+                }else {
+
+                    SharedPreferences.Editor editor = getSharedPreferences("save",MODE_PRIVATE).edit();
+                    editor.putBoolean("value",false);
+                    editor.apply();
+                    notification_switch.setChecked(false);
+                }
+            }
+        });
+
 
         imagebuttonn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-               //
+                //
                 dialog.dismiss();
             }
         });
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(false);
         dialog.show();
+
+
+
+
+
 
 
     }
@@ -519,22 +580,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      }*/
 
 
-
-   private void  layoutAnimation(RecyclerView recyclerView){
+    private void layoutAnimation(RecyclerView recyclerView) {
 
         Context context = recyclerView.getContext();
-        LayoutAnimationController layoutAnimationController = AnimationUtils.loadLayoutAnimation(context,R.anim.down_to_up);
+        LayoutAnimationController layoutAnimationController = AnimationUtils.loadLayoutAnimation(context, R.anim.down_to_up);
         recyclerView.setLayoutAnimation(layoutAnimationController);
         recyclerView.getAdapter().notifyDataSetChanged();
         recyclerView.scheduleLayoutAnimation();
 
 
-       final LayoutAnimationController controller =
-               AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_down_to_up);
+        final LayoutAnimationController controller =
+                AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_down_to_up);
 
-       recyclerView.setLayoutAnimation(controller);
-       recyclerView.getAdapter().notifyDataSetChanged();
-       recyclerView.scheduleLayoutAnimation();
+        recyclerView.setLayoutAnimation(controller);
+        recyclerView.getAdapter().notifyDataSetChanged();
+        recyclerView.scheduleLayoutAnimation();
     }
 
 }

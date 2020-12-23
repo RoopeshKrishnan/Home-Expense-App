@@ -42,6 +42,7 @@ public class Expense_Repository {
         return allExpense;
     }
 
+
     // Insert asyncTask
     private static class InsertExpesneAsyncTASK extends AsyncTask<Expense, Void, Void> {
 

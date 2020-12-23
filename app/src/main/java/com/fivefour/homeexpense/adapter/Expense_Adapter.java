@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -17,6 +18,9 @@ import com.fivefour.homeexpense.db.Expense;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.view.animation.AnimationUtils.*;
+import static android.widget.Toast.*;
 
 public class Expense_Adapter extends RecyclerView.Adapter<Expense_Adapter.ExpenseHolder> {
 
@@ -35,6 +39,9 @@ public class Expense_Adapter extends RecyclerView.Adapter<Expense_Adapter.Expens
 
     @Override
     public void onBindViewHolder(@NonNull ExpenseHolder holder, int position) {
+
+        //holder.container.setAnimation(AnimationUtils.loadAnimation(context, R.anim.layout_animation_down_to_up ));
+
         Expense currentExpense = expenses.get(position);
         holder.yearHolder.setText(currentExpense.getYearmonth());
         holder.totalHolder.setText(String.valueOf(currentExpense.getExp_total()));
@@ -45,9 +52,11 @@ public class Expense_Adapter extends RecyclerView.Adapter<Expense_Adapter.Expens
 
     @Override
     public int getItemCount() {
+        int sizeof = expenses.size();
 
+        return sizeof;
 
-        return expenses.size();
+        //  return expenses.size();
 
     }
 
@@ -66,13 +75,15 @@ public class Expense_Adapter extends RecyclerView.Adapter<Expense_Adapter.Expens
 
     // ViewHolder
     class ExpenseHolder extends RecyclerView.ViewHolder {
-       // CardView container;
+        //CardView container;
         private TextView yearHolder;
         private TextView totalHolder;
+        //LinearLayout anim_container;
 
         public ExpenseHolder(View itemView) {
             super(itemView);
-           // container = itemView.findViewById(R.id.card_container);
+            // anim_container = itemView.findViewById(R.id.linear_container);
+            // container = itemView.findViewById(R.id.card_container);
             yearHolder = itemView.findViewById(R.id.holder_year);
             totalHolder = itemView.findViewById(R.id.holder_total);
 
