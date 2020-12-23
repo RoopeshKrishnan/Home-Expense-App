@@ -8,12 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_home"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".Expense_Edit_calculation_Activity"
-            android:parentActivityName=".MainActivity"
-            ></activity>
+            android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".VersionActivity"
             android:parentActivityName=".MainActivity" />
@@ -28,12 +26,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".Notification_Broadcast"/>
 
         <meta-data
             android:name="preloaded_fonts"

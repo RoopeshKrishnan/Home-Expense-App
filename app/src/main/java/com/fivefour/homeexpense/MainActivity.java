@@ -6,7 +6,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.Dialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -109,13 +113,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-        //notification
+                //notification
+        createnotificationchannel();
+
+
        /* notification_preferences = getSharedPreferences("save",MODE_PRIVATE);
         SwitchCompat switchCompat = findViewById(R.id.notfication_switch_bt);
         switchCompat.setChecked(notification_preferences.getBoolean("value",true));*/
 
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+                toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -163,14 +170,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }else{
                 Toast.makeText(MainActivity.this, "done", Toast.LENGTH_LONG).show();
             }*/
-
-
-
-
-
-
-
-
 
 
         expense_vIewModel = ViewModelProviders.of(this).get(Expense_VIewModel.class);
@@ -302,6 +301,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     // end of on create
+
+    private void createnotificationchannel(){
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+
+
+            CharSequence name ="HomeExpense";
+            String discription = "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("HomeExpensee",name,importance);
+            channel.setDescription(discription);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+
+    }
+
+
+
 
 
     @Override
@@ -516,22 +536,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         SwitchCompat notification_switch;
         notification_switch = dialog.findViewById(R.id.notfication_switch_bt);
 
-        notification_preferences = getSharedPreferences("save",MODE_PRIVATE);
-       // SwitchCompat switchCompat = findViewById(R.id.notfication_switch_bt);
-        notification_switch.setChecked(notification_preferences.getBoolean("value",true));
+        notification_preferences = getSharedPreferences("save", MODE_PRIVATE);
+        // SwitchCompat switchCompat = findViewById(R.id.notfication_switch_bt);
+        notification_switch.setChecked(notification_preferences.getBoolean("value", true));
         notification_switch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (notification_switch.isChecked()){
+                if (notification_switch.isChecked()) {
+                    // notificatio code
+                    Toast.makeText(MainActivity.this,"notification is on",Toast.LENGTH_SHORT);
 
-                    SharedPreferences.Editor editor = getSharedPreferences("save",MODE_PRIVATE).edit();
-                    editor.putBoolean("value",true);
+                    Intent intent = new Intent(MainActivity.this,Notification_Broadcast.class);
+                    PendingIntent pendingIntent =  PendingIntent.getBroadcast(MainActivity.this, 0 , intent, 0);
+
+                    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+                    long timeButtonCLick = System.currentTimeMillis();
+                    long tensecondMills = 1000*10;
+
+                    alarmManager.set(AlarmManager.RTC_WAKEUP,timeButtonCLick + tensecondMills,pendingIntent);
+
+
+
+                    //sp
+
+                    SharedPreferences.Editor editor = getSharedPreferences("save", MODE_PRIVATE).edit();
+                    editor.putBoolean("value", true);
                     editor.apply();
                     notification_switch.setChecked(true);
-                }else {
+                } else {
 
-                    SharedPreferences.Editor editor = getSharedPreferences("save",MODE_PRIVATE).edit();
-                    editor.putBoolean("value",false);
+                    SharedPreferences.Editor editor = getSharedPreferences("save", MODE_PRIVATE).edit();
+                    editor.putBoolean("value", false);
                     editor.apply();
                     notification_switch.setChecked(false);
                 }
@@ -550,11 +586,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(false);
         dialog.show();
-
-
-
-
-
 
 
     }
