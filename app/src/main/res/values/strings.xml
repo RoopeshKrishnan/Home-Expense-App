@@ -37,8 +37,8 @@ first you need to select a month and add your expense in the corresponding field
     <string name="fish">മീൻ</string>
     <string name="meat">ഇറച്ചി</string>
     <string name="water">വാട്ടർ ബില്ല്</string>
-    <string name="disel">ഡീസൽ</string>
-    <string name="chips">ചിപ്സ്</string>
+    <string name="disel">ട്രാവൽ</string>
+    <string name="chips">ചിപ്സ്/ഫുഡ്  </string>
     <string name="shopping">ഷോപ്പിംഗ്</string>
     <string name="mobile"> റീചാർജ്    </string>
     <string name="wifi">കേബിൾ/wifi  </string>

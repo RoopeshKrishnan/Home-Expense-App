@@ -17,6 +17,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.os.*;
 
@@ -308,7 +309,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
             CharSequence name ="HomeExpense";
-            String discription = "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn";
+            String discription = "Add new expense";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel("HomeExpensee",name,importance);
             channel.setDescription(discription);
@@ -544,17 +545,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View view) {
                 if (notification_switch.isChecked()) {
                     // notificatio code
+
+                    Calendar calendar =Calendar.getInstance();
+                    calendar.set(Calendar.HOUR_OF_DAY, 22);
+                    calendar.set(Calendar.MINUTE,10);
+                    calendar.set(Calendar.SECOND,30);
+
                     Toast.makeText(MainActivity.this,"notification is on",Toast.LENGTH_SHORT);
 
                     Intent intent = new Intent(MainActivity.this,Notification_Broadcast.class);
-                    PendingIntent pendingIntent =  PendingIntent.getBroadcast(MainActivity.this, 0 , intent, 0);
+                    PendingIntent pendingIntent =  PendingIntent.getBroadcast(MainActivity.this, 100 , intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
                     AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
-                    long timeButtonCLick = System.currentTimeMillis();
+                  /*  long timeButtonCLick = System.currentTimeMillis();
                     long tensecondMills = 1000*10;
 
-                    alarmManager.set(AlarmManager.RTC_WAKEUP,timeButtonCLick + tensecondMills,pendingIntent);
+                    alarmManager.set(AlarmManager.RTC_WAKEUP,timeButtonCLick + tensecondMills,pendingIntent);*/
+
+                    // new code
+                    alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY*14,pendingIntent);
 
 
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.fivefour.homeexpense.ItemAnimation;
 import com.fivefour.homeexpense.R;
 import com.fivefour.homeexpense.db.Expense;
 
@@ -27,6 +29,8 @@ public class Expense_Adapter extends RecyclerView.Adapter<Expense_Adapter.Expens
     private List<Expense> expenses = new ArrayList<>();
     private OnItemClickListener listener;
     Context context;
+    int lastposition = -1;
+
 
     @NonNull
     @Override
@@ -40,11 +44,21 @@ public class Expense_Adapter extends RecyclerView.Adapter<Expense_Adapter.Expens
     @Override
     public void onBindViewHolder(@NonNull ExpenseHolder holder, int position) {
 
+      /*  if (holder.getAdapterPosition()>lastposition){
+
+            Animation animation =AnimationUtils.loadAnimation(context, R.anim.layout_animation_down_to_up);
+            ((ExpenseHolder) holder).itemView.startAnimation(animation);
+
+
+            lastposition=holder.getAdapterPosition();
+        }*/
         //holder.container.setAnimation(AnimationUtils.loadAnimation(context, R.anim.layout_animation_down_to_up ));
 
-        Expense currentExpense = expenses.get(position);
+       Expense currentExpense = expenses.get(position);
         holder.yearHolder.setText(currentExpense.getYearmonth());
         holder.totalHolder.setText(String.valueOf(currentExpense.getExp_total()));
+
+        ItemAnimation.animateFadeIn(holder.itemView, position);
 
         //holder.container.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_transition_animation));
 
