@@ -64,7 +64,7 @@ public class Expense_Adapter extends RecyclerView.Adapter<Expense_Adapter.Expens
 
     }
 
-    @Override
+  /*  @Override
     public int getItemCount() {
         int sizeof = expenses.size();
 
@@ -72,6 +72,11 @@ public class Expense_Adapter extends RecyclerView.Adapter<Expense_Adapter.Expens
 
         //  return expenses.size();
 
+    }*/
+
+    @Override
+    public int getItemCount() {
+        return expenses.size();
     }
 
     // Update recycler view with each cahnges

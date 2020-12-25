@@ -43,7 +43,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="150sp"
+        android:layout_height="200sp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="5sp"
         app:cardCornerRadius="10sp"
@@ -85,7 +85,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingLeft="8sp"
                 android:paddingTop="10sp"
@@ -106,6 +106,32 @@
                     android:paddingRight="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="8sp"
+                android:paddingTop="10sp"
+                android:paddingRight="8sp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="Erase all data"
+                    android:textColor="@color/settings_darkmode_text_color"
+                    android:textSize="17sp" />
+
+
+                <Button
+                    android:id="@+id/erasebt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="@color/settings_darkmode_button_bg_color"
+                    android:text="OK" />
             </LinearLayout>
         </LinearLayout>
 

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlarmManager;
+import android.app.Application;
 import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -25,6 +26,7 @@ import android.os.*;
 import com.fivefour.homeexpense.adapter.Expense_Adapter;
 import com.fivefour.homeexpense.db.Expense;
 import com.fivefour.homeexpense.db.Expense_Dao;
+import com.fivefour.homeexpense.db.Expense_Database;
 import com.fivefour.homeexpense.model.Expense_VIewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -38,6 +40,7 @@ import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -54,6 +57,7 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -89,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Expense expense;
     Expense_Dao expenseDao;
     private List<Expense> expenses = new ArrayList<>();
+    ImageView nodataview;
 
     Boolean isNightModeOn;
     SharedPreferences sharedPreferences, notification_preferences;
@@ -113,17 +118,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
 
-
-                //notification
+        //notification
         createnotificationchannel();
 
 
-       /* notification_preferences = getSharedPreferences("save",MODE_PRIVATE);
-        SwitchCompat switchCompat = findViewById(R.id.notfication_switch_bt);
-        switchCompat.setChecked(notification_preferences.getBoolean("value",true));*/
-
-
-                toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -155,6 +154,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
+
+        nodataview = (ImageView)findViewById(R.id.no_data) ;
         Expense_Adapter expenseAdapter = new Expense_Adapter();
         recyclerView.setAdapter(expenseAdapter);
 
@@ -171,12 +172,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }else{
                 Toast.makeText(MainActivity.this, "done", Toast.LENGTH_LONG).show();
             }*/
+        //int storing = expenseAdapter.getItemCount();
+/*if (expense_vIewModel.getAllExpense()==null){
+    Toast.makeText(MainActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
+}*/
+     /*   Expense_VIewModel chkdb=null;
+        Boolean vv;
+         chkdb.checkdbsizebbbb();*/
+
+
+        expenseDao = Expense_Database.getInstance(this).expense_dao();
 
 
         expense_vIewModel = ViewModelProviders.of(this).get(Expense_VIewModel.class);
+        /*expense_vIewModel.getAllExpense().observe(this, new Observer<List<Expense>>() {
+            @Override
+            public void onChanged(List<Expense> expenses) {
+
+                 i
+                //update recycler view
+                expenseAdapter.updateExpenseon(expenses);
+                //Toast.makeText(MainActivity.this, "onChanged", Toast.LENGTH_SHORT).show();
+            }
+        });*/
+
         expense_vIewModel.getAllExpense().observe(this, new Observer<List<Expense>>() {
             @Override
             public void onChanged(List<Expense> expenses) {
+
+
+                if (expenses.size()==0)
+                {
+                    nodataview.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
+
+
+
+                }else{
+
+                    nodataview.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
+
+                }
 
 
                 //update recycler view
@@ -184,6 +221,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //Toast.makeText(MainActivity.this, "onChanged", Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
+        //end temp
 
 
         new ItemTouchHelper(new SimpleCallback(0,
@@ -220,11 +261,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 dialog = new Dialog(MainActivity.this);
                 dialog.setContentView(R.layout.delete_confirm_layout);
 
-                // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                //     dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.delete_button));
-
-                //   }
-                //   dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialog.setCancelable(false);
                 dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
 
@@ -295,23 +331,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
 
-        // animation for recyclerview
-
-
     }
 
 
     // end of on create
 
-    private void createnotificationchannel(){
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
 
 
-            CharSequence name ="HomeExpense";
+
+
+    //notification
+    private void createnotificationchannel() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+
+            CharSequence name = "HomeExpense";
             String discription = "Add new expense";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("HomeExpensee",name,importance);
+            NotificationChannel channel = new NotificationChannel("HomeExpensee", name, importance);
             channel.setDescription(discription);
 
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
@@ -320,9 +358,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
-
-
-
 
 
     @Override
@@ -511,6 +546,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         dialog.setContentView(R.layout.settings_layout);
 
         ImageButton imagebuttonn = dialog.findViewById(R.id.imagebutton);
+        imagebuttonn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //
+                dialog.dismiss();
+            }
+        });
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
         Button themechanger = dialog.findViewById(R.id.buttton);
         themechanger.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -546,15 +592,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if (notification_switch.isChecked()) {
                     // notificatio code
 
-                    Calendar calendar =Calendar.getInstance();
+                    Calendar calendar = Calendar.getInstance();
                     calendar.set(Calendar.HOUR_OF_DAY, 22);
-                    calendar.set(Calendar.MINUTE,10);
-                    calendar.set(Calendar.SECOND,30);
+                    calendar.set(Calendar.MINUTE, 10);
+                    calendar.set(Calendar.SECOND, 30);
 
-                    Toast.makeText(MainActivity.this,"notification is on",Toast.LENGTH_SHORT);
+                    Toast.makeText(MainActivity.this, "notification is on", Toast.LENGTH_SHORT);
 
-                    Intent intent = new Intent(MainActivity.this,Notification_Broadcast.class);
-                    PendingIntent pendingIntent =  PendingIntent.getBroadcast(MainActivity.this, 100 , intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                    Intent intent = new Intent(MainActivity.this, Notification_Broadcast.class);
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
                     AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
@@ -564,8 +610,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     alarmManager.set(AlarmManager.RTC_WAKEUP,timeButtonCLick + tensecondMills,pendingIntent);*/
 
                     // new code
-                    alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY*14,pendingIntent);
-
+                    alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY * 14, pendingIntent);
 
 
                     //sp
@@ -584,21 +629,57 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-
-        imagebuttonn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //
-                dialog.dismiss();
-            }
-        });
-        dialog.setCancelable(true);
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.show();
+        Button erasebt;
+        erasebt = dialog.findViewById(R.id.erasebt);
+        erasebt.setOnClickListener(new View.OnClickListener() {
+                                       @Override
+                                       public void onClick(View view) {
 
 
-    }
+                                           Dialog dialog;
+                                           dialog = new Dialog(MainActivity.this);
+                                           dialog.setContentView(R.layout.delete_confirm_layout);
+
+                                           dialog.setCancelable(false);
+                                           dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+
+                                           Button delete_ok_btn1 = dialog.findViewById(R.id.delete_ok_bt);
+                                           Button delete_cancel_btn1 = dialog.findViewById(R.id.delete_cancel_bt);
+
+                                           delete_ok_btn1.setOnClickListener(new View.OnClickListener() {
+                                               @Override
+                                               public void onClick(View view) {
+
+                                                   expense_vIewModel.deleteAllNotes();
+                                                   dialog.dismiss();
+                                                   Toast.makeText(MainActivity.this, "Refreshed", Toast.LENGTH_SHORT).show();
+                                               }
+                                           });
+
+                                           delete_cancel_btn1.setOnClickListener(new View.OnClickListener() {
+                                               @Override
+                                               public void onClick(View view) {
+
+                                                   //recyclerView.getAdapter().notifyItemChanged(viewHolder.getAdapterPosition());
+                                                   dialog.dismiss();
+                                               }
+                                           });
+                                           dialog.setCanceledOnTouchOutside(false);
+                                           dialog.show();
+
+
+                                           //end else
+
+
+
+
+
+//end
+            } // end of onclick
+        });// end of setonclick lsitner
+
+
+    } // end of setting dialog
   /*  private void showEmptyView() {
 
         int uyu = expense.size();*/

@@ -30,5 +30,10 @@ public interface Expense_Dao {
     @Query("SELECT * FROM expense_table ")
     LiveData<List<Expense>> getAllExpense();
 
+    @Query("DELETE FROM expense_table")
+    void deleteAllNotes();
+
+    @Query("SELECT * FROM expense_table ")
+    List<Expense> getalldatacount();
 
 }
