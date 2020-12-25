@@ -37,8 +37,10 @@
         android:layout_weight="15"
         android:paddingLeft="80sp"
         android:paddingRight="80sp"
+        android:visibility="invisible"
         android:src="@drawable/ic_cloud_computing"/>
     <TextView
+        android:id="@+id/nodata1"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:text="No Record"
@@ -46,10 +48,13 @@
         android:layout_gravity="center"
         android:paddingTop="10sp"
         android:textSize="23sp"
+        android:visibility="invisible"
         android:textColor="@color/expense_cal_textview_color"/>
         <TextView
+            android:id="@+id/nodata2"
             android:layout_width="wrap_content"
             android:layout_marginTop="10sp"
+            android:visibility="invisible"
             android:layout_height="wrap_content"
             android:text="click on the + icon to add new data"
             android:layout_gravity="center"/>

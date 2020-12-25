@@ -59,6 +59,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -94,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Expense_Dao expenseDao;
     private List<Expense> expenses = new ArrayList<>();
     ImageView nodataview;
+    TextView nodataone, nodatatwo;
 
     Boolean isNightModeOn;
     SharedPreferences sharedPreferences, notification_preferences;
@@ -155,7 +157,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         recyclerView.setHasFixedSize(true);
 
 
-        nodataview = (ImageView)findViewById(R.id.no_data) ;
+        nodataview = (ImageView) findViewById(R.id.no_data);
+        nodataone = (TextView)findViewById(R.id.nodata1);
+        nodatatwo = (TextView)findViewById(R.id.nodata2);
+
         Expense_Adapter expenseAdapter = new Expense_Adapter();
         recyclerView.setAdapter(expenseAdapter);
 
@@ -201,16 +206,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onChanged(List<Expense> expenses) {
 
 
-                if (expenses.size()==0)
-                {
+                if (expenses.size() == 0) {
                     nodataview.setVisibility(View.VISIBLE);
+                    nodataone.setVisibility(View.VISIBLE);
+                    nodatatwo.setVisibility(View.VISIBLE);
                     recyclerView.setVisibility(View.GONE);
 
 
-
-                }else{
+                } else {
 
                     nodataview.setVisibility(View.GONE);
+                    nodataone.setVisibility(View.GONE);
+                    nodatatwo.setVisibility(View.GONE);
                     recyclerView.setVisibility(View.VISIBLE);
 
                 }
@@ -221,7 +228,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //Toast.makeText(MainActivity.this, "onChanged", Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
         //end temp
@@ -335,9 +341,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     // end of on create
-
-
-
 
 
     //notification
@@ -632,51 +635,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Button erasebt;
         erasebt = dialog.findViewById(R.id.erasebt);
         erasebt.setOnClickListener(new View.OnClickListener() {
-                                       @Override
-                                       public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
 
+                Toast.makeText(MainActivity.this,"Long press the button to erase data",Toast.LENGTH_LONG).show();
 
-                                           Dialog dialog;
-                                           dialog = new Dialog(MainActivity.this);
-                                           dialog.setContentView(R.layout.delete_confirm_layout);
+            }
+        });
 
-                                           dialog.setCancelable(false);
-                                           dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+        erasebt.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
 
-                                           Button delete_ok_btn1 = dialog.findViewById(R.id.delete_ok_bt);
-                                           Button delete_cancel_btn1 = dialog.findViewById(R.id.delete_cancel_bt);
-
-                                           delete_ok_btn1.setOnClickListener(new View.OnClickListener() {
-                                               @Override
-                                               public void onClick(View view) {
-
-                                                   expense_vIewModel.deleteAllNotes();
-                                                   dialog.dismiss();
-                                                   Toast.makeText(MainActivity.this, "Refreshed", Toast.LENGTH_SHORT).show();
-                                               }
-                                           });
-
-                                           delete_cancel_btn1.setOnClickListener(new View.OnClickListener() {
-                                               @Override
-                                               public void onClick(View view) {
-
-                                                   //recyclerView.getAdapter().notifyItemChanged(viewHolder.getAdapterPosition());
-                                                   dialog.dismiss();
-                                               }
-                                           });
-                                           dialog.setCanceledOnTouchOutside(false);
-                                           dialog.show();
-
-
-                                           //end else
-
-
-
-
-
-//end
-            } // end of onclick
-        });// end of setonclick lsitner
+                expense_vIewModel.deleteAllNotes();
+                Toast.makeText(MainActivity.this, "Refreshed", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+                return true;
+            }
+        });
 
 
     } // end of setting dialog
