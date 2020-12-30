@@ -35,8 +35,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
-            android:paddingLeft="10sp"
-            android:paddingTop="22sp"
+            android:paddingLeft="6sp"
+            android:gravity="center_vertical"
             android:text="here is"
             android:textColor="@color/recy_card_total_textcolor"
             android:textSize="18sp" />

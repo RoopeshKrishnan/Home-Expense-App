@@ -29,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="20"
+        android:background="@color/home_page_bg"
         android:orientation="vertical">
     <ImageView
         android:id="@+id/no_data"
@@ -56,7 +57,7 @@
             android:layout_marginTop="10sp"
             android:visibility="invisible"
             android:layout_height="wrap_content"
-            android:text="click on the + icon to add new data"
+            android:text="click on the  ' + '  icon to add new data"
             android:layout_gravity="center"/>
 
     </LinearLayout>

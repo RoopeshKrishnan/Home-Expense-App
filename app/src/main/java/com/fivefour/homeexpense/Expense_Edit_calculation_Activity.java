@@ -307,7 +307,7 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
                         android.R.style.Theme_Material_Dialog_MinWidth,
                         mDateSetListner,
                         year, month, day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.R.color.transparent));
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.R.color.white));
                 dialog.show();
             }
         });

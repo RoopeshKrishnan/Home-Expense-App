@@ -58,16 +58,20 @@
 
     <color name="fab_background">#EE85FD</color>
 
-    <color name="expense_cal_textview_background">#EE85FD</color>
+    <color name="expense_cal_textview_background">#444245</color>
 
     <color name="expense_cal_textview_color">#FFFFFFFF</color>
 
     <color name="bt_bg_cancel_color">#EE85FD</color>
 
-    <color name="navigationDrawer">#EE85FD</color>
+    <color name="navigationDrawer">#444245</color>
 
     <color name="switchcolor">#EE85FD</color>
 
+    <color name="tv_bg_style_stroke_color">#EE85FD</color>
+
+
+    <color name="home_page_bg">#000000</color>
 
 
 
