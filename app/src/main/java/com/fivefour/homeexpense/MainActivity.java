@@ -164,26 +164,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Expense_Adapter expenseAdapter = new Expense_Adapter();
         recyclerView.setAdapter(expenseAdapter);
 
-        // recyclerview item count
-        // int checkitemcount = expenseAdapter.getItemCount();
-        // Toast.makeText(MainActivity.this, checkitemcount+"  hurrrrrrrrrrrrrrrray", Toast.LENGTH_LONG).show();
-        // if (checkitemcount>0){
-        // this.recyclerView.setVisibility(View.GONE);
-        //    Toast.makeText(MainActivity.this, "hurrrrrrrrrrrrrrrray", Toast.LENGTH_LONG).show(); }
-
-        /* if (expenseAdapter.getItemCount() ==0 ){
-
-                Toast.makeText(MainActivity.this, "hurrrrrrrrrrrrrrrray", Toast.LENGTH_LONG).show();
-            }else{
-                Toast.makeText(MainActivity.this, "done", Toast.LENGTH_LONG).show();
-            }*/
-        //int storing = expenseAdapter.getItemCount();
-/*if (expense_vIewModel.getAllExpense()==null){
-    Toast.makeText(MainActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
-}*/
-     /*   Expense_VIewModel chkdb=null;
-        Boolean vv;
-         chkdb.checkdbsizebbbb();*/
 
 
         expenseDao = Expense_Database.getInstance(this).expense_dao();

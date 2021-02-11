@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.app.Dialog;
 
+import com.fivefour.homeexpense.Calculator.Calculator;
 import com.fivefour.homeexpense.db.Expense;
 import com.fivefour.homeexpense.db.Expense_Dao;
 import com.fivefour.homeexpense.model.Expense_VIewModel;
@@ -68,7 +69,7 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
     public EditText hp_onne, hp_1, hp_2, hp_3, hp_4, hp_5, hp_6, hp_7, hp_8, hp_9, hp_10, hp_11, hp_12, hp_13, hp_14, hp_15, hp_16, hp_17;
     Toolbar toolbar;
     RecyclerView recyclerView;
-    FloatingActionButton fab_expnese_action;
+    FloatingActionButton fab_expnese_action, fab_calc;
     public DatePickerDialog.OnDateSetListener mDateSetListner;
 
 
@@ -284,6 +285,14 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
 
             }
         });
+
+     fab_calc = (FloatingActionButton)findViewById(R.id.fab_calc);
+     fab_calc.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View view) {
+             Calc_open();
+         }
+     });
 
 
        /* okbutton = (Button) findViewById(R.id.bt_ok);
@@ -709,6 +718,13 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
             finish();
 
         }
+    }
+
+    public void Calc_open(){
+
+        Intent CalcIntent = new Intent(Expense_Edit_calculation_Activity.this, Calculator.class);
+        startActivity(CalcIntent);
+
     }
 
     public void filleverything(){

@@ -65,6 +65,11 @@
     <color name="home_page_bg">#FFFFFFFF</color>
 
 
+    <!-- calc -->
+    <color name="horizontal_btn_color">#404b69</color>
+    <color name="number_color">#feac06</color>
+    <color name="function_color">#ff7006</color>
+    <color name="equal_color">#01c854</color>
 
 
 

@@ -767,6 +767,16 @@
             android:layout_margin="@dimen/fab_margin"
             android:backgroundTint="@color/fab_background"
             app:srcCompat="@drawable/ic_fabicon" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_calc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:focusable="true"
+            android:layout_margin="@dimen/fab_margin"
+            android:backgroundTint="@color/fab_background"
+            app:srcCompat="@drawable/ic_pencil" />
     </LinearLayout>
 
 
