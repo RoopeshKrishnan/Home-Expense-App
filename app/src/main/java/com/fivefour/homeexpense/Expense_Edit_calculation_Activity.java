@@ -722,8 +722,10 @@ public class Expense_Edit_calculation_Activity extends AppCompatActivity {
 
     public void Calc_open(){
 
-        Intent CalcIntent = new Intent(Expense_Edit_calculation_Activity.this, Calculator.class);
-        startActivity(CalcIntent);
+       Intent CalcIntent = new Intent(Expense_Edit_calculation_Activity.this, Calculator.class);
+       startActivity(CalcIntent);
+
+
 
     }
 
